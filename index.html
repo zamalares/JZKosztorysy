@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Kosztorysów - JZ Production</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- html2pdf.js do generowania PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        @media print {
+            body { background: white; }
+            .no-print { display: none; }
+            .print-area { box-shadow: none; padding: 0; }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto space-y-6">
+        
+        <!-- Panel sterowania -->
+        <div class="no-print bg-white p-6 rounded-xl shadow-md flex flex-wrap gap-4 items-center justify-between">
+            <div>
+                <h1 class="text-xl font-bold text-slate-900">Generator Kosztorysów</h1>
+                <p class="text-sm text-slate-500">JZ Production – System Wycen z pliku JSON</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <button onclick="addRow()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition">+ Dodaj pozycję</button>
+                <button onclick="generatePDF()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition">Pobierz PDF</button>
+                <button onclick="exportJSON()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition">Eksportuj Kosztorys JSON</button>
+            </div>
+        </div>
+
+        <!-- Obszar dokumentu (do PDF) -->
+        <div id="invoice" class="print-area bg-white p-8 md:p-12 rounded-xl shadow-lg space-y-8 border border-slate-200">
+            
+            <!-- Nagłówek firmy -->
+            <div class="flex justify-between items-start border-b border-slate-200 pb-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold tracking-tight text-slate-900">JZ PRODUCTION</h2>
+                    <p class="text-sm text-slate-600 font-medium">Jacek Zamecki</p>
+                    <p class="text-xs text-slate-500 mt-1">Kompozycja, Aranżacja, Produkcja muzyczna, Miks & Mastering</p>
+                    <p class="text-xs text-slate-500">Wrocław, ul. Brachowska 10</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm font-semibold text-slate-700">KOSZTORYS / OFERTA</p>
+                    <div class="mt-2 text-xs text-slate-500 space-y-1">
+                        <p>Data: <input type="date" id="docDate" class="border border-slate-300 rounded px-2 py-0.5 text-right font-medium text-slate-800"></p>
+                        <p>Nr: <input type="text" id="docNumber" value="KSZ/2026/001" class="border border-slate-300 rounded px-2 py-0.5 text-right font-medium text-slate-800 w-32"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dane klienta -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Klient / Zleceniodawca:</label>
+                    <input type="text" id="clientName" placeholder="Imię i nazwisko / Nazwa instytucji" class="w-full bg-white border border-slate-300 rounded px-3 py-2 text-sm font-medium text-slate-800 focus:outline-none focus:border-slate-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Projekt / Utwór:</label>
+                    <input type="text" id="projectName" placeholder="np. Album muzyczny / Single / Operetta" class="w-full bg-white border border-slate-300 rounded px-3 py-2 text-sm font-medium text-slate-800 focus:outline-none focus:border-slate-500">
+                </div>
+            </div>
+
+            <!-- Tabela pozycji -->
+            <div>
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b-2 border-slate-300 text-xs font-bold text-slate-600 uppercase tracking-wider">
+                            <th class="py-3 px-2 w-12 text-center">Lp.</th>
+                            <th class="py-3 px-3">Nazwa usługi / pozycja z cennika</th>
+                            <th class="py-3 px-3 w-24 text-center">Ilość</th>
+                            <th class="py-3 px-3 w-32 text-right">Cena jedn. (PLN)</th>
+                            <th class="py-3 px-3 w-32 text-right">Wartość (PLN)</th>
+                            <th class="no-print py-3 px-2 w-12 text-center">Akcja</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsTable" class="divide-y divide-slate-200 text-sm">
+                        <!-- Wiersze generowane dynamicznie -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Podsumowanie -->
+            <div class="flex justify-end pt-4 border-t border-slate-200">
+                <div class="w-64 space-y-2">
+                    <div class="flex justify-between text-sm text-slate-600">
+                        <span>Suma netto:</span>
+                        <span id="subtotalSum" class="font-bold text-slate-900">0.00 zł</span>
+                    </div>
+                    <div class="flex justify-between text-sm text-slate-600">
+                        <span>Podatek / Uwagi:</span>
+                        <span class="text-xs text-slate-500">Zwolniony z VAT</span>
+                    </div>
+                    <div class="flex justify-between text-base font-extrabold text-slate-900 border-t border-slate-300 pt-2">
+                        <span>Razem do zapłaty:</span>
+                        <span id="totalSum" class="text-emerald-600">0.00 zł</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stopka -->
+            <div class="border-t border-slate-200 pt-6 text-xs text-slate-500 space-y-2">
+                <p class="font-semibold text-slate-700">Warunki realizacji:</p>
+                <p>1. Wstępna wycena ważna przez 30 dni.</p>
+                <p>2. Warunki płatności oraz harmonogram zgodnie z ustaleniami produkcyjnymi.</p>
+                <p class="pt-4 text-center text-slate-400">Dziękuję za współpracę! — JZ Production</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let priceList = [];
+        document.getElementById('docDate').valueAsDate = new Date();
+
+        // Ładowanie cennika z pliku cennik.json
+        async function loadPriceList() {
+            try {
+                const response = await fetch('cennik.json');
+                const data = await response.json();
+                priceList = data.uslugi;
+                
+                // Dodanie startowych domyślnych pozycji
+                addRow("Mix do 6 min utworu - Do 20 ścieżek", 1, 550);
+                addRow("Mastering", 1, 200);
+            } catch (error) {
+                console.error('Nie udało się wczytać cennika:', error);
+                alert('Błąd wczytywania pliku cennik.json. Upewnij się, że plik leży w tym samym folderze na GitHubie.');
+            }
+        }
+
+        function addRow(name = "", qty = 1, price = 0) {
+            const tbody = document.getElementById('itemsTable');
+            const rowCount = tbody.rows.length + 1;
+            
+            const tr = document.createElement('tr');
+            tr.className = "hover:bg-slate-50 transition";
+            
+            let optionsHTML = '<option value="">-- Wybierz usługę z cennika --</option>';
+            priceList.forEach(item => {
+                const selected = item.name === name ? 'selected' : '';
+                optionsHTML += `<option value="${item.name}" data-price="${item.price}" data-unit="${item.unit}" ${selected}>${item.name} – ${item.price} zł / ${item.unit}</option>`;
+            });
+
+            tr.innerHTML = `
+                <td class="py-3 px-2 text-center text-slate-400 row-number">${rowCount}</td>
+                <td class="py-3 px-3">
+                    <select class="w-full bg-slate-50 border border-slate-300 rounded px-2 py-1.5 text-sm item-select mb-1" onchange="selectItem(this)">
+                        ${optionsHTML}
+                    </select>
+                    <input type="text" value="${name}" placeholder="Dodatkowe szczegóły / nazwa utworu..." class="w-full bg-white border border-slate-300 rounded px-2 py-1 text-xs item-name text-slate-700">
+                </td>
+                <td class="py-3 px-3 text-center">
+                    <input type="number" value="${qty}" min="1" class="w-16 text-center bg-white border border-slate-300 rounded px-2 py-1.5 text-sm item-qty" oninput="calculateTotals()">
+                </td>
+                <td class="py-3 px-3 text-right">
+                    <input type="number" value="${price}" step="0.01" class="w-28 text-right bg-white border border-slate-300 rounded px-2 py-1.5 text-sm item-price" oninput="calculateTotals()">
+                </td>
+                <td class="py-3 px-3 text-right font-semibold text-slate-800 item-row-total">
+                    0.00 zł
+                </td>
+                <td class="no-print py-3 px-2 text-center">
+                    <button onclick="removeRow(this)" class="text-rose-500 hover:text-rose-700 font-bold px-2 py-1">×</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+            calculateTotals();
+        }
+
+        function selectItem(selectElement) {
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const price = selectedOption.getAttribute('data-price');
+            const row = selectElement.closest('tr');
+            
+            if (price) {
+                row.querySelector('.item-price').value = price;
+                row.querySelector('.item-name').value = selectedOption.value;
+                calculateTotals();
+            }
+        }
+
+        function removeRow(btn) {
+            const row = btn.closest('tr');
+            row.remove();
+            updateRowNumbers();
+            calculateTotals();
+        }
+
+        function updateRowNumbers() {
+            const rows = document.querySelectorAll('#itemsTable tr');
+            rows.forEach((row, index) => {
+                row.querySelector('.row-number').innerText = index + 1;
+            });
+        }
+
+        function calculateTotals() {
+            const rows = document.querySelectorAll('#itemsTable tr');
+            let grandTotal = 0;
+
+            rows.forEach(row => {
+                const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
+                const price = parseFloat(row.querySelector('.item-price').value) || 0;
+                const rowTotal = qty * price;
+                
+                row.querySelector('.item-row-total').innerText = rowTotal.toFixed(2) + ' zł';
+                grandTotal += rowTotal;
+            });
+
+            document.getElementById('subtotalSum').innerText = grandTotal.toFixed(2) + ' zł';
+            document.getElementById('totalSum').innerText = grandTotal.toFixed(2) + ' zł';
+        }
+
+        function generatePDF() {
+            const element = document.getElementById('invoice');
+            const clientName = document.getElementById('clientName').value || 'kosztorys';
+            const opt = {
+                margin:       10,
+                filename:     `Kosztorys_${clientName.replace(/\s+/g, '_')}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().from(element).set(opt).save();
+        }
+
+        function exportJSON() {
+            const data = {
+                date: document.getElementById('docDate').value,
+                number: document.getElementById('docNumber').value,
+                client: document.getElementById('clientName').value,
+                project: document.getElementById('projectName').value,
+                items: []
+            };
+
+            document.querySelectorAll('#itemsTable tr').forEach(row => {
+                data.items.push({
+                    name: row.querySelector('.item-name').value,
+                    qty: row.querySelector('.item-qty').value,
+                    price: row.querySelector('.item-price').value
+                });
+            });
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `kosztorys_${data.number.replace(/\//g, '_')}.json`;
+            a.click();
+        }
+
+        window.onload = loadPriceList;
+    </script>
+</body>
+</html>
