@@ -102,7 +102,6 @@
         </div>
       </div>
 
-      <!-- Nagłówek oferty i klienta -->
       <div class="card editor-meta-card">
         <div class="meta-grid">
           <label class="field">
@@ -127,7 +126,6 @@
         </div>
       </div>
 
-      <!-- Pasek dodawania pozycji -->
       <div class="card add-bar">
         <div class="add-from-pricelist">
           <select id="est-pricelist-select" class="input">
@@ -143,7 +141,6 @@
         </div>
       </div>
 
-      <!-- Tabela pozycji kosztorysu -->
       <div class="card table-wrap">
         <table class="data-table estimate-table" id="estimate-table">
           <thead>
@@ -163,7 +160,6 @@
         </table>
       </div>
 
-      <!-- Podsumowanie 2x2 i rabat całościowy -->
       <div class="summary-grid">
         <div class="card summary-discount-box">
           <label class="field">
@@ -193,14 +189,64 @@
       </div>
     </section>
 
-    <!-- PODSTRONA 3: ARCHIWUM KOSZTORYSÓW (Krok 3) -->
+    <!-- PODSTRONA 3: ARCHIWUM KOSZTORYSÓW -->
     <section id="view-archive" class="view">
-      <div class="card placeholder-box">
-        <h2>3. Archiwum kosztorysów</h2>
-        <p class="muted">Ten moduł (Bieżące, Archiwalne, Kosz 30 dni oraz eksport/import JSON) uruchomimy w Kroku 3.</p>
+      <div class="view-header">
+        <div>
+          <h1>Archiwum kosztorysów</h1>
+          <p class="muted">
+            Przeglądaj kosztorysy bieżące, archiwalne oraz kosz (30-dniowy bufor). Zmiany w tym widoku synchronizują się automatycznie co ok. 15 sekund.
+          </p>
+        </div>
+
+        <div class="view-actions">
+          <button type="button" id="btn-export-json" class="btn btn-secondary">⬇ Pobierz kopię JSON</button>
+          <button type="button" id="btn-import-json" class="btn btn-secondary">⬆ Wczytaj kopię JSON</button>
+          <input type="file" id="archive-import-file" accept=".json,application/json" style="display:none;" />
+        </div>
       </div>
+
+      <div class="subtabs-bar">
+        <button type="button" id="arch-tab-current" class="subtab-btn active">Bieżące (0)</button>
+        <button type="button" id="arch-tab-archived" class="subtab-btn">Kosztorysy archiwalne (0)</button>
+        <button type="button" id="arch-tab-trash" class="subtab-btn">Kosz 30 dni (0)</button>
+      </div>
+
+      <div class="toolbar archive-toolbar">
+        <div class="archive-filters">
+          <input
+            type="search"
+            id="archive-search"
+            class="input search-input"
+            placeholder="Szukaj po tytule oferty lub kliencie..."
+          />
+          <select id="archive-status-filter" class="input status-select">
+            <option value="all">Wszystkie statusy</option>
+            <option value="draft">Tylko szkice robocze</option>
+            <option value="final">Tylko wygenerowane PDF</option>
+          </select>
+        </div>
+        <span id="archive-count" class="muted">Wyświetlono: 0 z 0</span>
+      </div>
+
+      <div id="archive-list" class="archive-list"></div>
     </section>
   </main>
+
+  <!-- MODAL SZYBKIEGO PODGLĄDU KOSZTORYSU -->
+  <div id="preview-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="preview-title">
+    <div class="modal-backdrop" data-close-preview></div>
+    <div class="modal-card modal-card-wide">
+      <div class="modal-header">
+        <h2 id="preview-title">Podgląd kosztorysu</h2>
+        <button type="button" class="icon-btn" data-close-preview title="Zamknij">✕</button>
+      </div>
+      <div id="preview-body" class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-close-preview>Zamknij</button>
+      </div>
+    </div>
+  </div>
 
   <!-- MODAL KONFIGURACJI GITHUB -->
   <div id="github-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
