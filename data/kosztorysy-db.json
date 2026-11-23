@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-23T14:29:06.887Z"
+    "updatedAt": "2026-11-23T14:30:56.276Z"
   },
   "priceList": [
     {
@@ -72,7 +72,7 @@
     {
       "id": "est-1795444048900-jeex",
       "status": "draft",
-      "archived": false,
+      "archived": true,
       "title": "Ala",
       "client": "lala",
       "validFrom": "2026-11-23",
@@ -92,7 +92,7 @@
         }
       ],
       "createdAt": "2026-11-23T14:27:28.900Z",
-      "updatedAt": "2026-11-23T14:29:06.886Z",
+      "updatedAt": "2026-11-23T14:30:34.928Z",
       "summary": {
         "gross": 180,
         "discount": 0,
