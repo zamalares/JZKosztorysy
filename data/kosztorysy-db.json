@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "version": 1,
+    "updatedAt": "2026-11-23T10:29:05.846Z"
+  },
+  "priceList": [
+    {
+      "id": "srv-1",
+      "name": "MUZYKA ROZRYWKOWA - KOMPOZYCJA; pilot audio; do 5 instrumentów",
+      "unit": "min.",
+      "price": 240,
+      "color": "#e8f1ff"
+    },
+    {
+      "id": "srv-2",
+      "name": "MUZYKA ROZRYWKOWA - ARANŻACJA; pilot audio; 6-19 instrumentów",
+      "unit": "min.",
+      "price": 390,
+      "color": "#e8f1ff"
+    },
+    {
+      "id": "srv-3",
+      "name": "Zrealizowanie pojedynczej partii - brzmienia vsti - do 5 min",
+      "unit": "usł.",
+      "price": 300,
+      "color": "#e6f7ed"
+    },
+    {
+      "id": "srv-4",
+      "name": "Wynajem sesyjnego muzyka",
+      "unit": "usł.",
+      "price": 250,
+      "color": "#fef7dc"
+    },
+    {
+      "id": "srv-5",
+      "name": "Nagranie studyjne",
+      "unit": "h.",
+      "price": 180,
+      "color": "#ffece4"
+    },
+    {
+      "id": "srv-6",
+      "name": "Edycja głęboka śladów - intonacja, timing",
+      "unit": "h.",
+      "price": 200,
+      "color": "#ffece4"
+    },
+    {
+      "id": "srv-7",
+      "name": "Mix do 6 min utworu - Do 20 ścieżek",
+      "unit": "usł.",
+      "price": 550,
+      "color": "#f1eafe"
+    },
+    {
+      "id": "srv-8",
+      "name": "Mix do 6 min utworu - 20-50 ścieżek",
+      "unit": "usł.",
+      "price": 1000,
+      "color": "#f1eafe"
+    },
+    {
+      "id": "srv-9",
+      "name": "Mastering",
+      "unit": "Utwór",
+      "price": 200,
+      "color": "#f1eafe"
+    }
+  ],
+  "estimates": [],
+  "trash": []
+}
