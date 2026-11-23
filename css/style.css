@@ -660,3 +660,175 @@ body {
   font-size: 18px;
   color: var(--text);
 }
+/* Podstrona 3: Archiwum kosztorysów */
+.btn-danger {
+  background: #fee2e2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.subtabs-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.subtab-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.subtab-btn.active {
+  background: #1e242b;
+  color: #ffffff;
+  border-color: #1e242b;
+}
+
+.archive-toolbar {
+  flex-wrap: wrap;
+}
+
+.archive-filters {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  min-width: 260px;
+  flex-wrap: wrap;
+}
+
+.status-select {
+  max-width: 220px;
+  background: var(--surface);
+}
+
+.archive-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.archive-item {
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.archive-item-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.archive-title {
+  font-size: 15px;
+}
+
+.archive-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.archive-item-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.archive-amount {
+  font-size: 16px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.archive-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.trash-days {
+  font-size: 12px;
+  font-weight: 600;
+  color: #92400e;
+  background: #fef3c7;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.empty-box {
+  padding: 28px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.modal-card-wide {
+  max-width: 640px;
+}
+
+.preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 55vh;
+  overflow-y: auto;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0;
+}
+
+.preview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.preview-note {
+  font-size: 12px;
+  color: var(--muted);
+  padding-left: 12px;
+  margin-top: 2px;
+}
+
+.preview-sub {
+  background: #f1f5f9;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.preview-sep {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  padding: 4px 0;
+}
+
+.preview-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
