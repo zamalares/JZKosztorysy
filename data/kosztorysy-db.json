@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-23T14:26:57.980Z"
+    "updatedAt": "2026-11-23T14:27:21.131Z"
   },
   "priceList": [
     {
@@ -73,8 +73,8 @@
       "id": "est-1795443990773-pje3",
       "status": "draft",
       "archived": false,
-      "title": "",
-      "client": "",
+      "title": "Ala",
+      "client": "lala",
       "validFrom": "2026-11-23",
       "validTo": "2026-12-07",
       "globalDiscount": "",
@@ -108,7 +108,7 @@
         }
       ],
       "createdAt": "2026-11-23T14:26:30.774Z",
-      "updatedAt": "2026-11-23T14:26:57.980Z",
+      "updatedAt": "2026-11-23T14:27:21.131Z",
       "summary": {
         "gross": 420,
         "discount": 0,
