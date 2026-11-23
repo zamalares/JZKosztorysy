@@ -6,9 +6,11 @@ import {
 } from './github-sync.js';
 import { initPriceListModule, DEFAULT_PRICE_LIST } from './price-list.js';
 import { initEstimateEditorModule, formatPLN } from './estimate-editor.js';
+import { initArchiveModule, purgeExpiredTrash } from './archive.js';
 
 const LOCAL_CACHE_KEY = 'jz_kosztorysy_db_cache_v1';
-const PRICELIST_AUTOSAVE_DELAY_MS = 7000; // 7 sekund opóźnienia dla Cennika
+const PRICELIST_AUTOSAVE_DELAY_MS = 7000;  // ~7 s dla Cennika
+const ARCHIVE_AUTOSAVE_DELAY_MS = 15000;   // ~15 s dla Archiwum / Kosza
 
 let dbState = {
   meta: {
@@ -30,6 +32,10 @@ const syncBadge = document.getElementById('sync-status');
 const syncText = document.getElementById('sync-text');
 const modal = document.getElementById('github-modal');
 const settingsForm = document.getElementById('github-settings-form');
+
+const previewModal = document.getElementById('preview-modal');
+const previewTitle = document.getElementById('preview-title');
+const previewBody = document.getElementById('preview-body');
 
 function setSyncStatus(mode, text) {
   syncBadge.className = `sync-badge sync-${mode}`;
@@ -100,7 +106,8 @@ function scheduleAutoSave(delayMs, commitMessage) {
     return;
   }
 
-  setSyncStatus('dirty', 'Niezapisane zmiany (auto-zapis wkrótce)...');
+  const sec = Math.round(delayMs / 1000);
+  setSyncStatus('dirty', `Niezapisane zmiany (auto-zapis za ~${sec}s)...`);
   clearTimeout(autoSaveTimer);
   autoSaveTimer = setTimeout(() => {
     syncNow(commitMessage);
@@ -117,11 +124,57 @@ function upsertEstimateInState(estimate) {
   saveLocalCache();
 }
 
-function switchTab(tabName) {
-  document.querySelectorAll('.nav-btn').forEach(b => {
+function openPreviewModal(est) {
+  previewTitle.textContent = est.title ? `Podgląd: ${est.title}` : 'Podgląd kosztorysu';
+  const rowsHtml = (est.items || [])
+    .map((it) => {
+      if (it.type === 'separator') {
+        return `<div class="preview-sep">— SEPARATOR ${it.label ? `(${escapeText(it.label)})` : ''} —</div>`;
+      }
+      if (it.type === 'subtotal') {
+        return `<div class="preview-sub"><strong>${escapeText(it.label || 'Suma częściowa')}</strong></div>`;
+      }
+      const lineSum = (Number(it.qty) || 0) * (Number(it.price) || 0);
+      return `
+        <div class="preview-row">
+          <div>
+            <strong>${escapeText(it.name || 'Pozycja bez nazwy')}</strong>
+            <div class="muted small">${Number(it.qty) || 0} ${escapeText(it.unit || '')} × ${formatPLN(Number(it.price) || 0)}</div>
+            ${it.note ? `<div class="preview-note">↳ ${escapeText(it.note)}</div>` : ''}
+          </div>
+          <strong>${formatPLN(lineSum)}</strong>
+        </div>
+      `;
+    })
+    .join('');
+
+  previewBody.innerHTML = `
+    <div class="muted small">
+      <strong>Dla:</strong> ${escapeText(est.client || '—')} |
+      <strong>Ważny:</strong> ${escapeText(est.validFrom || '—')} – ${escapeText(est.validTo || '—')}
+    </div>
+    <div class="preview-list">${rowsHtml || '<p class="muted">Brak pozycji.</p>'}</div>
+    <div class="preview-total">
+      <span>Suma końcowa:</span>
+      <strong>${formatPLN(est.summary?.total ?? 0)}</strong>
+    </div>
+  `;
+  previewModal.classList.remove('hidden');
+}
+
+function closePreviewModal() {
+  previewModal.classList.add('hidden');
+}
+
+document.querySelectorAll('[data-close-preview]').forEach((el) => {
+  el.addEventListener('click', closePreviewModal);
+});
+
+async function switchTab(tabName) {
+  document.querySelectorAll('.nav-btn').forEach((b) => {
     b.classList.toggle('active', b.dataset.tab === tabName);
   });
-  document.querySelectorAll('.view').forEach(v => {
+  document.querySelectorAll('.view').forEach((v) => {
     v.classList.toggle('active', v.id === `view-${tabName}`);
   });
 
@@ -129,10 +182,13 @@ function switchTab(tabName) {
     estimateEditorModule.render();
   } else if (tabName === 'pricelist') {
     priceListModule.render();
+  } else if (tabName === 'archive') {
+    await refreshFromGitHubSilent();
+    archiveModule.render();
   }
 }
 
-// Moduł 1: Cennik (auto-zapis z opóźnieniem ~7s)
+// Moduł 1: Cennik (auto-zapis co ~7s)
 const priceListModule = initPriceListModule({
   getState: () => dbState,
   onPriceListChanged: () => {
@@ -154,6 +210,38 @@ const estimateEditorModule = initEstimateEditorModule({
     alert(
       `Kosztorys domknięty i zapisany w archiwum (${formatPLN(finalEstimate.summary?.total || 0)}). W Kroku 4 podepniemy tutaj właściwy eksport pliku PDF.`
     );
+  }
+});
+
+// Moduł 3: Archiwum + Kosz 30 dni + backup JSON (auto-zapis co ~15s)
+const archiveModule = initArchiveModule({
+  getState: () => dbState,
+  onArchiveChanged: (commitMsg) => {
+    scheduleAutoSave(ARCHIVE_AUTOSAVE_DELAY_MS, commitMsg);
+  },
+  onEditEstimate: (est) => {
+    estimateEditorModule.loadEstimate(est, 'edit');
+    switchTab('editor');
+  },
+  onUseAsTemplate: (est) => {
+    estimateEditorModule.loadEstimate(est, 'template');
+    switchTab('editor');
+  },
+  onPreviewEstimate: (est) => {
+    openPreviewModal(est);
+  },
+  onImportDatabase: async (importedData) => {
+    dbState = {
+      meta: importedData.meta || { version: 1, updatedAt: new Date().toISOString() },
+      priceList: Array.isArray(importedData.priceList) ? importedData.priceList : structuredClone(DEFAULT_PRICE_LIST),
+      estimates: Array.isArray(importedData.estimates) ? importedData.estimates : [],
+      trash: Array.isArray(importedData.trash) ? importedData.trash : []
+    };
+    purgeExpiredTrash(dbState);
+    saveLocalCache();
+    priceListModule.render();
+    estimateEditorModule.render();
+    await syncNow('Import kopii zapasowej JSON');
   }
 });
 
@@ -207,10 +295,34 @@ window.addEventListener('beforeunload', (e) => {
   }
 });
 
+async function refreshFromGitHubSilent() {
+  const config = getGitHubConfig();
+  if (!config || !config.token || !config.repo || hasUnsavedChanges || isSaving) return;
+
+  try {
+    const result = await fetchDatabaseFromGitHub(config);
+    if (result.exists && result.data) {
+      currentFileSha = result.sha;
+      dbState = {
+        meta: result.data.meta || { version: 1, updatedAt: new Date().toISOString() },
+        priceList: Array.isArray(result.data.priceList) ? result.data.priceList : structuredClone(DEFAULT_PRICE_LIST),
+        estimates: Array.isArray(result.data.estimates) ? result.data.estimates : [],
+        trash: Array.isArray(result.data.trash) ? result.data.trash : []
+      };
+      purgeExpiredTrash(dbState);
+      saveLocalCache();
+    }
+  } catch (err) {
+    console.warn('Ciche odświeżenie z GitHub nie powiodło się:', err);
+  }
+}
+
 async function initialLoadFromGitHub() {
   loadLocalCache();
+  purgeExpiredTrash(dbState);
   priceListModule.render();
   estimateEditorModule.render();
+  archiveModule.render();
 
   const config = getGitHubConfig();
   if (!config || !config.token || !config.repo) {
@@ -229,10 +341,15 @@ async function initialLoadFromGitHub() {
         estimates: Array.isArray(result.data.estimates) ? result.data.estimates : [],
         trash: Array.isArray(result.data.trash) ? result.data.trash : []
       };
+      const purged = purgeExpiredTrash(dbState);
       saveLocalCache();
       priceListModule.render();
       estimateEditorModule.render();
+      archiveModule.render();
       setSyncStatus('ok', 'Połączono z GitHub');
+      if (purged) {
+        scheduleAutoSave(ARCHIVE_AUTOSAVE_DELAY_MS, 'Czyszczenie wpisów po 30 dniach w koszu');
+      }
     } else {
       currentFileSha = null;
       await syncNow('Inicjalizacja bazy kosztorysów');
@@ -241,6 +358,14 @@ async function initialLoadFromGitHub() {
     console.error(err);
     setSyncStatus('error', `Błąd połączenia: ${err.message}`);
   }
+}
+
+function escapeText(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 initialLoadFromGitHub();
