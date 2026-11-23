@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-23T10:29:05.846Z"
+    "updatedAt": "2026-11-23T10:29:27.224Z"
   },
   "priceList": [
     {
@@ -66,6 +66,13 @@
       "unit": "Utwór",
       "price": 200,
       "color": "#f1eafe"
+    },
+    {
+      "id": "srv-1795429754399",
+      "name": "MIX",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
     }
   ],
   "estimates": [],
