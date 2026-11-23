@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-23T13:51:16.841Z"
+    "updatedAt": "2026-11-23T13:53:14.484Z"
   },
   "priceList": [
     {
@@ -68,6 +68,48 @@
       "color": "#f1eafe"
     }
   ],
-  "estimates": [],
+  "estimates": [
+    {
+      "id": "est-1795441970303-v0wq",
+      "status": "draft",
+      "archived": false,
+      "title": "",
+      "client": "",
+      "validFrom": "2026-11-23",
+      "validTo": "2026-12-07",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795441977779-9bq",
+          "type": "service",
+          "sourceServiceId": "srv-2",
+          "name": "MUZYKA ROZRYWKOWA - ARANŻACJA; pilot audio; 6-19 instrumentów",
+          "unit": "min.",
+          "qty": 5,
+          "price": 390,
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795441980928-xrp",
+          "type": "service",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 250,
+          "discount": "",
+          "note": ""
+        }
+      ],
+      "createdAt": "2026-11-23T13:52:50.303Z",
+      "updatedAt": "2026-11-23T13:53:14.483Z",
+      "summary": {
+        "gross": 2200,
+        "discount": 0,
+        "total": 2200
+      }
+    }
+  ],
   "trash": []
 }
