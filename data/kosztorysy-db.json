@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-23T14:20:12.999Z"
+    "updatedAt": "2026-11-23T14:26:57.980Z"
   },
   "priceList": [
     {
@@ -69,6 +69,52 @@
     }
   ],
   "estimates": [
+    {
+      "id": "est-1795443990773-pje3",
+      "status": "draft",
+      "archived": false,
+      "title": "",
+      "client": "",
+      "validFrom": "2026-11-23",
+      "validTo": "2026-12-07",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795444007131-zv6",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795444012586-49s",
+          "type": "service",
+          "sourceServiceId": "srv-1",
+          "name": "MUZYKA ROZRYWKOWA - KOMPOZYCJA; pilot audio; do 5 instrumentów",
+          "unit": "min.",
+          "qty": 1,
+          "price": 240,
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "sub-1795444014688-8sm",
+          "type": "subtotal",
+          "label": "Suma częściowa"
+        }
+      ],
+      "createdAt": "2026-11-23T14:26:30.774Z",
+      "updatedAt": "2026-11-23T14:26:57.980Z",
+      "summary": {
+        "gross": 420,
+        "discount": 0,
+        "total": 420
+      }
+    },
     {
       "id": "est-1795443530374-ooa0",
       "status": "draft",
