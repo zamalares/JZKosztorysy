@@ -77,18 +77,119 @@
               <th style="width: 70px; text-align: right;">Usuń</th>
             </tr>
           </thead>
-          <tbody id="pricelist-tbody">
-            <!-- Wiersze renderowane dynamicznie przez js/price-list.js -->
-          </tbody>
+          <tbody id="pricelist-tbody"></tbody>
         </table>
       </div>
     </section>
 
-    <!-- PODSTRONA 2: NOWY KOSZTORYS (Krok 2) -->
+    <!-- PODSTRONA 2: NOWY KOSZTORYS / EDYTOR -->
     <section id="view-editor" class="view">
-      <div class="card placeholder-box">
-        <h2>2. Nowy kosztorys / Edytor</h2>
-        <p class="muted">Ten moduł uruchomimy w Kroku 2 — będzie pobierał pozycje bezpośrednio z Twojego Cennika.</p>
+      <div class="view-header">
+        <div>
+          <div class="title-row">
+            <h1 id="editor-heading">Nowy kosztorys</h1>
+            <span id="editor-mode-badge" class="status-pill status-draft">SZKIC ROBOCZY</span>
+          </div>
+          <p class="muted" id="editor-subtitle">
+            Zapis do GitHub odbywa się dopiero po kliknięciu <strong>Zapisz</strong> (wersja robocza) lub <strong>Generuj PDF</strong> (domknięcie kosztorysu).
+          </p>
+        </div>
+
+        <div class="view-actions">
+          <button type="button" id="btn-new-estimate" class="btn btn-secondary">+ Wyczyść / Nowy</button>
+          <button type="button" id="btn-save-draft" class="btn btn-secondary">💾 Zapisz</button>
+          <button type="button" id="btn-generate-pdf" class="btn btn-primary">📄 Generuj PDF</button>
+        </div>
+      </div>
+
+      <!-- Nagłówek oferty i klienta -->
+      <div class="card editor-meta-card">
+        <div class="meta-grid">
+          <label class="field">
+            <span>Nazwa oferty / projektu (w nagłówku: OFERTA: ...)</span>
+            <input type="text" id="est-title" class="input" placeholder="np. Produkcja piosenki - v2" />
+          </label>
+
+          <label class="field">
+            <span>Dla (klient / instytucja)</span>
+            <input type="text" id="est-client" class="input" placeholder="np. Jan Kowalski" />
+          </label>
+
+          <label class="field">
+            <span>Ważna od</span>
+            <input type="date" id="est-valid-from" class="input" />
+          </label>
+
+          <label class="field">
+            <span>Ważna do</span>
+            <input type="date" id="est-valid-to" class="input" />
+          </label>
+        </div>
+      </div>
+
+      <!-- Pasek dodawania pozycji -->
+      <div class="card add-bar">
+        <div class="add-from-pricelist">
+          <select id="est-pricelist-select" class="input">
+            <option value="">-- Wybierz usługę z cennika --</option>
+          </select>
+          <button type="button" id="btn-add-from-pricelist" class="btn btn-secondary">+ Dodaj z cennika</button>
+        </div>
+
+        <div class="add-special-buttons">
+          <button type="button" id="btn-add-custom-item" class="btn btn-secondary">+ Pozycja „Inne”</button>
+          <button type="button" id="btn-add-subtotal" class="btn btn-secondary">+ Suma częściowa</button>
+          <button type="button" id="btn-add-separator" class="btn btn-secondary">+ Separator</button>
+        </div>
+      </div>
+
+      <!-- Tabela pozycji kosztorysu -->
+      <div class="card table-wrap">
+        <table class="data-table estimate-table" id="estimate-table">
+          <thead>
+            <tr>
+              <th style="width: 38px;" title="Przeciągnij wiersz"></th>
+              <th style="width: 44px;">Lp.</th>
+              <th>Usługa / opis</th>
+              <th style="width: 95px;">Jednostka</th>
+              <th style="width: 85px;">Ilość</th>
+              <th style="width: 115px;">Cena (zł)</th>
+              <th style="width: 120px;" title="Wpisz np. 10% lub -500 (kwota rabatu)">Rabat</th>
+              <th style="width: 125px; text-align: right;">Łączna cena</th>
+              <th style="width: 54px; text-align: right;" title="Usuń wiersz wraz z notatkami">Usuń</th>
+            </tr>
+          </thead>
+          <tbody id="estimate-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- Podsumowanie 2x2 i rabat całościowy -->
+      <div class="summary-grid">
+        <div class="card summary-discount-box">
+          <label class="field">
+            <span>Rabat całościowy (np. 10% lub -500 albo kwota w zł)</span>
+            <input
+              type="text"
+              id="est-global-discount"
+              class="input"
+              placeholder="np. 10% lub -500"
+            />
+          </label>
+          <p class="muted small">
+            Wpisanie znaku <strong>%</strong> liczy rabat procentowy od sumy brutto; wpisanie liczby (np. <strong>-500</strong> lub <strong>500</strong>) odejmuje kwotę w zł.
+          </p>
+        </div>
+
+        <div class="card summary-2x2">
+          <div class="sum-cell sum-label">SUMA BRUTTO</div>
+          <div class="sum-cell sum-value" id="sum-gross">0,00 zł</div>
+
+          <div class="sum-cell sum-label">RABAT</div>
+          <div class="sum-cell sum-value" id="sum-discount">0,00 zł</div>
+
+          <div class="sum-cell sum-label sum-final-label">SUMA KOŃCOWA</div>
+          <div class="sum-cell sum-value sum-final-value" id="sum-total">0,00 zł</div>
+        </div>
       </div>
     </section>
 
