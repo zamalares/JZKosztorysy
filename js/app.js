@@ -5,6 +5,7 @@ import {
   pushDatabaseToGitHub
 } from './github-sync.js';
 import { initPriceListModule, DEFAULT_PRICE_LIST } from './price-list.js';
+import { initEstimateEditorModule, formatPLN } from './estimate-editor.js';
 
 const LOCAL_CACHE_KEY = 'jz_kosztorysy_db_cache_v1';
 const PRICELIST_AUTOSAVE_DELAY_MS = 7000; // 7 sekund opóźnienia dla Cennika
@@ -77,7 +78,10 @@ async function syncNow(commitMessage = 'Aktualizacja bazy kosztorysów') {
     if (newSha) currentFileSha = newSha;
     hasUnsavedChanges = false;
     saveLocalCache();
-    setSyncStatus('ok', `Zsynchronizowano (${new Date().toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit', second: '2-digit' })})`);
+    setSyncStatus(
+      'ok',
+      `Zsynchronizowano (${new Date().toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit', second: '2-digit' })})`
+    );
   } catch (err) {
     console.error(err);
     setSyncStatus('error', `Błąd zapisu: ${err.message}`);
@@ -103,7 +107,32 @@ function scheduleAutoSave(delayMs, commitMessage) {
   }, delayMs);
 }
 
-// Moduł Cennika
+function upsertEstimateInState(estimate) {
+  const idx = dbState.estimates.findIndex(e => e.id === estimate.id);
+  if (idx >= 0) {
+    dbState.estimates[idx] = estimate;
+  } else {
+    dbState.estimates.unshift(estimate);
+  }
+  saveLocalCache();
+}
+
+function switchTab(tabName) {
+  document.querySelectorAll('.nav-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === tabName);
+  });
+  document.querySelectorAll('.view').forEach(v => {
+    v.classList.toggle('active', v.id === `view-${tabName}`);
+  });
+
+  if (tabName === 'editor') {
+    estimateEditorModule.render();
+  } else if (tabName === 'pricelist') {
+    priceListModule.render();
+  }
+}
+
+// Moduł 1: Cennik (auto-zapis z opóźnieniem ~7s)
 const priceListModule = initPriceListModule({
   getState: () => dbState,
   onPriceListChanged: () => {
@@ -111,15 +140,27 @@ const priceListModule = initPriceListModule({
   }
 });
 
-// Nawigacja między 3 podstronami
+// Moduł 2: Nowy kosztorys / Edytor (zapis na GitHub dopiero przy Zapisz lub Generuj PDF)
+const estimateEditorModule = initEstimateEditorModule({
+  getState: () => dbState,
+  onSaveDraft: async (draftEstimate) => {
+    upsertEstimateInState(draftEstimate);
+    await syncNow(`Zapis szkicu kosztorysu: ${draftEstimate.title || draftEstimate.client || draftEstimate.id}`);
+    alert(`Zapisano szkic roboczy (${formatPLN(draftEstimate.summary?.total || 0)}).`);
+  },
+  onGeneratePdf: async (finalEstimate) => {
+    upsertEstimateInState(finalEstimate);
+    await syncNow(`Domknięcie kosztorysu (PDF): ${finalEstimate.title || finalEstimate.client || finalEstimate.id}`);
+    alert(
+      `Kosztorys domknięty i zapisany w archiwum (${formatPLN(finalEstimate.summary?.total || 0)}). W Kroku 4 podepniemy tutaj właściwy eksport pliku PDF.`
+    );
+  }
+});
+
+// Nawigacja między podstronami
 document.querySelectorAll('.nav-btn').forEach((btn) => {
   btn.addEventListener('click', () => {
-    const target = btn.dataset.tab;
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-
-    btn.classList.add('active');
-    document.getElementById(`view-${target}`).classList.add('active');
+    switchTab(btn.dataset.tab);
   });
 });
 
@@ -159,7 +200,6 @@ document.getElementById('btn-sync-now').addEventListener('click', () => {
   syncNow('Ręczna synchronizacja z aplikacji');
 });
 
-// Ostrzeżenie przed zamknięciem karty, jeśli wisi niezapisana zmiana
 window.addEventListener('beforeunload', (e) => {
   if (hasUnsavedChanges) {
     e.preventDefault();
@@ -167,10 +207,10 @@ window.addEventListener('beforeunload', (e) => {
   }
 });
 
-// Inicjalizacja przy starcie strony
 async function initialLoadFromGitHub() {
   loadLocalCache();
   priceListModule.render();
+  estimateEditorModule.render();
 
   const config = getGitHubConfig();
   if (!config || !config.token || !config.repo) {
@@ -191,9 +231,9 @@ async function initialLoadFromGitHub() {
       };
       saveLocalCache();
       priceListModule.render();
+      estimateEditorModule.render();
       setSyncStatus('ok', 'Połączono z GitHub');
     } else {
-      // Plik jeszcze nie istnieje na GitHubie — zapisujemy bazę startową
       currentFileSha = null;
       await syncNow('Inicjalizacja bazy kosztorysów');
     }
