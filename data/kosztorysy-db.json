@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-23T14:53:30.378Z"
+    "updatedAt": "2026-11-23T14:54:13.621Z"
   },
   "priceList": [
     {
@@ -400,14 +400,14 @@
           "note": "bbb"
         }
       ],
-      "createdAt": "2026-11-23T14:53:27.855Z",
-      "updatedAt": "2026-11-23T14:53:30.377Z",
+      "createdAt": "2026-11-23T14:27:28.900Z",
+      "updatedAt": "2026-11-23T14:54:13.620Z",
       "summary": {
         "gross": 4010,
         "discount": 24,
         "total": 3986
       },
-      "finalizedAt": "2026-11-23T14:53:30.377Z"
+      "finalizedAt": "2026-11-23T14:54:13.620Z"
     },
     {
       "id": "est-1795444048900-jeex",
