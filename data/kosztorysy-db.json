@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-23T14:27:21.131Z"
+    "updatedAt": "2026-11-23T14:27:46.437Z"
   },
   "priceList": [
     {
@@ -69,6 +69,36 @@
     }
   ],
   "estimates": [
+    {
+      "id": "est-1795444048900-jeex",
+      "status": "draft",
+      "archived": false,
+      "title": "Ala",
+      "client": "lala",
+      "validFrom": "2026-11-23",
+      "validTo": "2026-12-07",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795444055674-wja",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "discount": "",
+          "note": ""
+        }
+      ],
+      "createdAt": "2026-11-23T14:27:28.900Z",
+      "updatedAt": "2026-11-23T14:27:46.437Z",
+      "summary": {
+        "gross": 180,
+        "discount": 0,
+        "total": 180
+      }
+    },
     {
       "id": "est-1795443990773-pje3",
       "status": "draft",
