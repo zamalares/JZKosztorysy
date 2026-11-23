@@ -7,6 +7,7 @@ import {
 import { initPriceListModule, DEFAULT_PRICE_LIST } from './price-list.js';
 import { initEstimateEditorModule, formatPLN } from './estimate-editor.js';
 import { initArchiveModule, purgeExpiredTrash } from './archive.js';
+import { generateEstimatePdf } from './pdf-generator.js';
 
 const LOCAL_CACHE_KEY = 'jz_kosztorysy_db_cache_v1';
 const PRICELIST_AUTOSAVE_DELAY_MS = 7000;  // ~7 s dla Cennika
@@ -158,7 +159,20 @@ function openPreviewModal(est) {
       <span>Suma końcowa:</span>
       <strong>${formatPLN(est.summary?.total ?? 0)}</strong>
     </div>
+    <div style="margin-top: 10px; text-align: right;">
+      <button type="button" id="btn-preview-download-pdf" class="btn btn-primary btn-sm">📄 Pobierz PDF</button>
+    </div>
   `;
+
+  previewBody.querySelector('#btn-preview-download-pdf').addEventListener('click', async () => {
+    try {
+      await generateEstimatePdf(est);
+    } catch (err) {
+      console.error(err);
+      alert(`Błąd generowania PDF: ${err.message}`);
+    }
+  });
+
   previewModal.classList.remove('hidden');
 }
 
@@ -207,9 +221,12 @@ const estimateEditorModule = initEstimateEditorModule({
   onGeneratePdf: async (finalEstimate) => {
     upsertEstimateInState(finalEstimate);
     await syncNow(`Domknięcie kosztorysu (PDF): ${finalEstimate.title || finalEstimate.client || finalEstimate.id}`);
-    alert(
-      `Kosztorys domknięty i zapisany w archiwum (${formatPLN(finalEstimate.summary?.total || 0)}). W Kroku 4 podepniemy tutaj właściwy eksport pliku PDF.`
-    );
+    try {
+      await generateEstimatePdf(finalEstimate);
+    } catch (err) {
+      console.error(err);
+      alert(`Kosztorys zapisany, ale wystąpił błąd przy generowaniu pliku PDF: ${err.message}`);
+    }
   }
 });
 
