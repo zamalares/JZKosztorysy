@@ -36,6 +36,12 @@ export function parseDiscount(rawInput, baseAmount) {
   };
 }
 
+function toNaturalInt(value) {
+  const num = Number(value);
+  if (!Number.isFinite(num) || num < 0) return 0;
+  return Math.floor(num);
+}
+
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -95,15 +101,25 @@ export function initEstimateEditorModule({
   let currentEstimate = createEmptyEstimate();
   let draggedItemIndex = null;
 
+  function applySelectColorPreview() {
+    const selectedOption = priceSelect.options[priceSelect.selectedIndex];
+    const bg = selectedOption?.dataset?.color || '#ffffff';
+    priceSelect.style.backgroundColor = bg;
+  }
+
   function refreshPriceListDropdown() {
     const state = getState();
     const list = state.priceList || [];
     const previousValue = priceSelect.value;
 
-    priceSelect.innerHTML = '<option value="">-- Wybierz usługę z cennika --</option>';
+    priceSelect.innerHTML = '<option value="" data-color="#ffffff">-- Wybierz usługę z cennika --</option>';
     list.forEach((srv, idx) => {
       const opt = document.createElement('option');
+      const rowColor = srv.color || '#ffffff';
       opt.value = srv.id;
+      opt.dataset.color = rowColor;
+      opt.style.backgroundColor = rowColor;
+      opt.style.color = '#1e242b';
       opt.textContent = `${idx + 1}. ${srv.name || 'Bez nazwy'} (${formatPLN(srv.price)} / ${srv.unit || 'usł.'})`;
       priceSelect.appendChild(opt);
     });
@@ -111,7 +127,10 @@ export function initEstimateEditorModule({
     if (previousValue && list.some(s => s.id === previousValue)) {
       priceSelect.value = previousValue;
     }
+    applySelectColorPreview();
   }
+
+  priceSelect.addEventListener('change', applySelectColorPreview);
 
   function updateHeaderBadge() {
     if (currentEstimate.status === 'final') {
@@ -148,7 +167,7 @@ export function initEstimateEditorModule({
 
     currentEstimate.items.forEach((item, idx) => {
       if (item.type === 'service' || item.type === 'custom') {
-        const qty = Number(item.qty) || 0;
+        const qty = toNaturalInt(item.qty);
         const unitPrice = Number(item.price) || 0;
         const lineGross = qty * unitPrice;
         const { discountAmount } = parseDiscount(item.discount, lineGross);
@@ -285,11 +304,16 @@ export function initEstimateEditorModule({
       itemCounter += 1;
       const lineTotal = computedRowTotals.get(idx) ?? 0;
       const isCustom = item.type === 'custom';
+      const naturalQty = toNaturalInt(item.qty);
+      item.qty = naturalQty;
 
       const tr = document.createElement('tr');
       tr.className = 'row-item';
       tr.draggable = true;
       tr.dataset.idx = String(idx);
+      if (item.color) {
+        tr.style.backgroundColor = item.color;
+      }
 
       tr.innerHTML = `
         <td class="drag-handle" rowspan="2" title="Przeciągnij pozycję wraz z notatką">⋮⋮</td>
@@ -309,7 +333,14 @@ export function initEstimateEditorModule({
           <input type="text" class="input js-unit" value="${escapeAttr(item.unit)}" placeholder="jedn." />
         </td>
         <td>
-          <input type="number" step="0.01" min="0" class="input num-input js-qty" value="${Number(item.qty) || 0}" />
+          <input
+            type="number"
+            step="1"
+            min="0"
+            inputmode="numeric"
+            class="input num-input js-qty"
+            value="${naturalQty}"
+          />
         </td>
         <td>
           <input type="number" step="0.01" min="0" class="input num-input js-price" value="${Number(item.price) || 0}" />
@@ -331,6 +362,9 @@ export function initEstimateEditorModule({
       // Wcięty wiersz notatek pod pozycją
       const noteTr = document.createElement('tr');
       noteTr.className = 'row-note';
+      if (item.color) {
+        noteTr.style.backgroundColor = item.color;
+      }
       noteTr.innerHTML = `
         <td colspan="6">
           <div class="note-indent">
@@ -351,7 +385,6 @@ export function initEstimateEditorModule({
         const lineEl = tr.querySelector('.js-line-total');
         if (lineEl) lineEl.textContent = formatPLN(updatedLine);
 
-        // Odśwież również wartości kolejnych sum częściowych
         tbody.querySelectorAll('tr.row-subtotal').forEach((subTr) => {
           const subIdx = Number(subTr.dataset.idx);
           const amtCell = subTr.querySelector('.subtotal-amount');
@@ -367,10 +400,19 @@ export function initEstimateEditorModule({
       tr.querySelector('.js-unit').addEventListener('input', (e) => {
         item.unit = e.target.value;
       });
-      tr.querySelector('.js-qty').addEventListener('input', (e) => {
-        item.qty = parseFloat(e.target.value) || 0;
+
+      const qtyInput = tr.querySelector('.js-qty');
+      qtyInput.addEventListener('input', (e) => {
+        item.qty = toNaturalInt(e.target.value);
         recalcSingleRow();
       });
+      qtyInput.addEventListener('change', (e) => {
+        const cleaned = toNaturalInt(e.target.value);
+        e.target.value = String(cleaned);
+        item.qty = cleaned;
+        recalcSingleRow();
+      });
+
       tr.querySelector('.js-price').addEventListener('input', (e) => {
         item.price = parseFloat(e.target.value) || 0;
         recalcSingleRow();
@@ -450,6 +492,7 @@ export function initEstimateEditorModule({
       unit: srv.unit || 'usł.',
       qty: 1,
       price: Number(srv.price) || 0,
+      color: srv.color || '#ffffff',
       discount: '',
       note: ''
     });
@@ -464,6 +507,7 @@ export function initEstimateEditorModule({
       unit: 'usł.',
       qty: 1,
       price: 0,
+      color: '#ffffff',
       discount: '',
       note: ''
     });
@@ -512,7 +556,6 @@ export function initEstimateEditorModule({
     const totals = computeTotals();
     currentEstimate.updatedAt = new Date().toISOString();
 
-    // Jeśli edytujemy kosztorys już domknięty PDF-em, zapisujemy go jako nowy szkic roboczy
     const payload = {
       ...structuredClone(currentEstimate),
       id: currentEstimate.status === 'final'
@@ -557,10 +600,6 @@ export function initEstimateEditorModule({
     await onGeneratePdf(structuredClone(finalized));
   });
 
-  /**
-   * Ładuje kosztorys z Archiwum do edytora:
-   * - mode: 'edit' (domyślnie) lub 'template' (baza dla innego klienta — czyści odbiorcę)
-   */
   function loadEstimate(estimateObj, mode = 'edit') {
     const clone = structuredClone(estimateObj);
     if (mode === 'template') {
@@ -572,7 +611,6 @@ export function initEstimateEditorModule({
       clone.validTo = plusDaysISO(14);
       clone.createdAt = new Date().toISOString();
     } else if (clone.status === 'final') {
-      // Edycja zamkniętego PDF-a startuje jako nowa wersja (nie nadpisuje poprzedniego PDF-a)
       clone.status = 'draft';
       clone.archived = false;
       clone.createdAt = new Date().toISOString();
