@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-23T14:31:22.944Z"
+    "updatedAt": "2026-11-23T14:33:37.691Z"
   },
   "priceList": [
     {
@@ -68,7 +68,108 @@
       "color": "#f1eafe"
     }
   ],
-  "estimates": [],
+  "estimates": [
+    {
+      "id": "est-1795444048900-jeex",
+      "status": "draft",
+      "archived": false,
+      "title": "Marcin Obłoza",
+      "client": "Płyta",
+      "validFrom": "2026-11-23",
+      "validTo": "2026-12-07",
+      "globalDiscount": "-24",
+      "items": [
+        {
+          "id": "line-1795444055674-wja",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 8,
+          "price": 180,
+          "discount": "",
+          "note": "wokal"
+        },
+        {
+          "id": "line-1795444297133-f97",
+          "type": "service",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 5,
+          "price": 250,
+          "discount": "",
+          "note": "gitara"
+        },
+        {
+          "id": "line-1795444300119-cv3",
+          "type": "service",
+          "sourceServiceId": "srv-7",
+          "name": "Mix do 6 min utworu - Do 20 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 550,
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795444302907-taq",
+          "type": "service",
+          "sourceServiceId": "srv-9",
+          "name": "Mastering",
+          "unit": "Utwór",
+          "qty": 1,
+          "price": 200,
+          "discount": "10%",
+          "note": ""
+        },
+        {
+          "id": "line-1795444355369-sdr",
+          "type": "custom",
+          "name": "skrobiemy",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 0,
+          "discount": "",
+          "note": "szyby"
+        },
+        {
+          "id": "sep-1795444398367-j72",
+          "type": "separator",
+          "label": ""
+        },
+        {
+          "id": "line-1795444403157-38b",
+          "type": "service",
+          "sourceServiceId": "srv-9",
+          "name": "Mastering",
+          "unit": "Utwór",
+          "qty": 1,
+          "price": 200,
+          "discount": "",
+          "note": "aaa"
+        },
+        {
+          "id": "line-1795444411213-v1i",
+          "type": "service",
+          "sourceServiceId": "srv-2",
+          "name": "MUZYKA ROZRYWKOWA - ARANŻACJA; pilot audio; 6-19 instrumentów",
+          "unit": "min.",
+          "qty": 1,
+          "price": 390,
+          "discount": "",
+          "note": "bbb"
+        }
+      ],
+      "createdAt": "2026-11-23T14:27:28.900Z",
+      "updatedAt": "2026-11-23T14:33:37.690Z",
+      "summary": {
+        "gross": 4010,
+        "discount": 24,
+        "total": 3986
+      }
+    }
+  ],
   "trash": [
     {
       "id": "est-1795444048900-jeex",
