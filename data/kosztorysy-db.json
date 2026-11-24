@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T10:41:53.761Z"
+    "updatedAt": "2026-11-24T10:43:45.711Z"
   },
   "priceList": [
     {
@@ -69,6 +69,50 @@
     }
   ],
   "estimates": [
+    {
+      "id": "est-1795517003970-7k61",
+      "status": "final",
+      "archived": false,
+      "title": "asdf",
+      "client": "asdfg",
+      "validFrom": "2026-11-24",
+      "validTo": "2026-12-08",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795517015032-sxp",
+          "type": "service",
+          "sourceServiceId": "srv-2",
+          "name": "MUZYKA ROZRYWKOWA - ARANŻACJA; pilot audio; 6-19 instrumentów",
+          "unit": "min.",
+          "qty": 1,
+          "price": 390,
+          "color": "#e8f1ff",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517018770-jmu",
+          "type": "service",
+          "sourceServiceId": "srv-6",
+          "name": "Edycja głęboka śladów - intonacja, timing",
+          "unit": "h.",
+          "qty": 1,
+          "price": 200,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        }
+      ],
+      "createdAt": "2026-11-24T10:43:23.970Z",
+      "updatedAt": "2026-11-24T10:43:45.710Z",
+      "finalizedAt": "2026-11-24T10:43:45.711Z",
+      "summary": {
+        "gross": 590,
+        "discount": 0,
+        "total": 590
+      }
+    },
     {
       "id": "est-1795516766685-opll",
       "status": "final",
