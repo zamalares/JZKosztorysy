@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:53:33.653Z"
+    "updatedAt": "2026-11-24T11:55:00.350Z"
   },
   "priceList": [
     {
@@ -105,64 +105,64 @@
     {
       "id": "srv-1795520369323",
       "name": "Partytura do wcześniej skomponowanego/aranżowanego w studio utworu, >5 instrumentów",
-      "unit": "usł.",
+      "unit": "min",
       "price": 170,
       "color": "#f1eafe"
     },
     {
       "id": "srv-1795521128638",
       "name": "Partytura do wcześniej skomponowanego/aranżowanego w studio utworu, 6-12 instrumentów",
-      "unit": "usł.",
+      "unit": "min",
       "price": 230,
       "color": "#f1eafe"
     },
     {
       "id": "srv-1795521129758",
       "name": "Partytura do wcześniej skomponowanego/aranżowanego w studio utworu, 13-20 instrumentów",
-      "unit": "usł.",
+      "unit": "min",
       "price": 340,
       "color": "#f1eafe"
     },
     {
       "id": "srv-1795521130708",
       "name": "Partytura do wcześniej skomponowanego/aranżowanego w studio utworu, <20 instrumentów",
-      "unit": "usł.",
+      "unit": "min",
       "price": 440,
       "color": "#f1eafe"
     },
     {
       "id": "srv-1795521131666",
-      "name": "",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "Kompozycja lub aranżacja muzyki rozrywkowej, tylko partytura, >5 instrumentów",
+      "unit": "min",
+      "price": 220,
+      "color": "#ffece4"
     },
     {
       "id": "srv-1795521132570",
-      "name": "",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "Kompozycja lub aranżacja muzyki rozrywkowej, tylko partytura, 6-12 instrumentów",
+      "unit": "min",
+      "price": 410,
+      "color": "#ffece4"
     },
     {
       "id": "srv-1795521133528",
-      "name": "",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "Kompozycja lub aranżacja muzyki rozrywkowej, tylko partytura, 13-20 instrumentów",
+      "unit": "min",
+      "price": 600,
+      "color": "#ffece4"
     },
     {
       "id": "srv-1795521134600",
-      "name": "",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "Kompozycja lub aranżacja muzyki rozrywkowej, tylko partytura, <20 instrumentów",
+      "unit": "min",
+      "price": 850,
+      "color": "#ffece4"
     },
     {
       "id": "srv-1795521135598",
-      "name": "",
+      "name": "Napisanie tekstu piosenki",
       "unit": "usł.",
-      "price": 0,
+      "price": 300,
       "color": "#ffffff"
     },
     {
