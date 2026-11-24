@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:30:58.312Z"
+    "updatedAt": "2026-11-24T11:32:00.275Z"
   },
   "priceList": [
     {
@@ -76,31 +76,31 @@
     },
     {
       "id": "srv-1795519815624",
-      "name": "MUZYKA ROZRYWKOWA – ARANŻACJA, pilot audio, ",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "MUZYKA ROZRYWKOWA – ARANŻACJA, pilot audio, >5 instrumentów",
+      "unit": "min.",
+      "price": 280,
+      "color": "#fef7dc"
     },
     {
       "id": "srv-1795519816081",
-      "name": "",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "MUZYKA ROZRYWKOWA – ARANŻACJA, pilot audio, 6-20 instrumentów",
+      "unit": "min",
+      "price": 390,
+      "color": "#fef7dc"
     },
     {
       "id": "srv-1795519818476",
-      "name": "",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "MUZYKA ROZRYWKOWA – ARANŻACJA, pilot audio, 20-60 instrumentów",
+      "unit": "min",
+      "price": 460,
+      "color": "#fef7dc"
     },
     {
       "id": "srv-1795519819540",
-      "name": "",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "MUZYKA ROZRYWKOWA – ARANŻACJA, pilot audio, <60 instrumentów",
+      "unit": "min",
+      "price": 670,
+      "color": "#fef7dc"
     }
   ],
   "estimates": [],
