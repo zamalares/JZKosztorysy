@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T10:46:56.048Z"
+    "updatedAt": "2026-11-24T10:47:05.325Z"
   },
   "priceList": [
     {
@@ -68,7 +68,52 @@
       "color": "#f1eafe"
     }
   ],
-  "estimates": [],
+  "estimates": [
+    {
+      "id": "est-1795517188303-pu90",
+      "status": "final",
+      "archived": false,
+      "title": "asdf",
+      "client": "asdfg",
+      "validFrom": "2026-11-24",
+      "validTo": "2026-12-08",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795517210535-qk2",
+          "type": "service",
+          "sourceServiceId": "srv-3",
+          "name": "Zrealizowanie pojedynczej partii - brzmienia vsti - do 5 min",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 300,
+          "color": "#e6f7ed",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517216514-dy3",
+          "type": "service",
+          "sourceServiceId": "srv-7",
+          "name": "Mix do 6 min utworu - Do 20 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 550,
+          "color": "#f1eafe",
+          "discount": "",
+          "note": ""
+        }
+      ],
+      "createdAt": "2026-11-24T10:46:28.303Z",
+      "updatedAt": "2026-11-24T10:47:05.324Z",
+      "finalizedAt": "2026-11-24T10:47:05.324Z",
+      "summary": {
+        "gross": 850,
+        "discount": 0,
+        "total": 850
+      }
+    }
+  ],
   "trash": [
     {
       "id": "est-1795444048900-jeex",
