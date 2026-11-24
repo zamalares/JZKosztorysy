@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:13:24.623Z"
+    "updatedAt": "2026-11-24T12:13:33.705Z"
   },
   "priceList": [
     {
@@ -211,7 +211,7 @@
       "id": "srv-1795522373032",
       "name": "Opieka producenta przy nagraniach, produkcji w zewnętrznym studio nagrań",
       "unit": "h.",
-      "price": 0,
+      "price": 150,
       "color": "#ffffff"
     },
     {
