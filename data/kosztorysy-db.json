@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:14:58.066Z"
+    "updatedAt": "2026-11-24T12:16:22.531Z"
   },
   "priceList": [
     {
@@ -224,7 +224,7 @@
     {
       "id": "srv-1795522376889",
       "name": "Edycja głęboka śladów – intonacja, timing",
-      "unit": "usłh.",
+      "unit": "h.",
       "price": 200,
       "color": "#ffece4"
     },
@@ -237,37 +237,44 @@
     },
     {
       "id": "srv-1795522379679",
-      "name": "Mix do 6 min utworu, ",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "Mix do 6 min utworu, Small, Do 20 ścieżek",
+      "unit": "Utwór",
+      "price": 550,
+      "color": "#e8f1ff"
     },
     {
       "id": "srv-1795522380945",
-      "name": "Mix do 6 min utworu, ",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "Mix do 6 min utworu, Standard, 20-50 ścieżek",
+      "unit": "Utwór",
+      "price": 1000,
+      "color": "#e8f1ff"
     },
     {
       "id": "srv-1795522382299",
-      "name": "Mix do 6 min utworu, ",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "Mix do 6 min utworu, Large, Ponad 50 ścieżek",
+      "unit": "Utwór",
+      "price": 1600,
+      "color": "#e8f1ff"
     },
     {
       "id": "srv-1795522383849",
       "name": "",
-      "unit": "usł.",
-      "price": 0,
+      "unit": "Utwór",
+      "price": 1000,
       "color": "#ffffff"
     },
     {
       "id": "srv-1795522386029",
       "name": "",
-      "unit": "usł.",
-      "price": 0,
+      "unit": "Utwór",
+      "price": 1550,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522544912",
+      "name": "",
+      "unit": "Utwór",
+      "price": 2500,
       "color": "#ffffff"
     }
   ],
