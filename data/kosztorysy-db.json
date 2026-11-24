@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:09:50.915Z"
+    "updatedAt": "2026-11-24T12:10:05.244Z"
   },
   "priceList": [
     {
@@ -169,14 +169,14 @@
       "id": "srv-1795521136534",
       "name": "Zrealizowanie pojedynczej partii – brzmienia vsti, do 5 min",
       "unit": "usł.",
-      "price": 0,
+      "price": 250,
       "color": "#ffffff"
     },
     {
       "id": "srv-1795521137686",
       "name": "Zrealizowanie pojedynczej partii – brzmienia vsti, do 5 min",
       "unit": "usł.",
-      "price": 0,
+      "price": 400,
       "color": "#ffffff"
     },
     {
