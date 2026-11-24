@@ -4,7 +4,7 @@ const PDFMAKE_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfma
 const VFS_FONTS_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.min.js';
 
 let pdfMakeLoaderPromise = null;
-let cachedLogoDataUrl = undefined; // undefined = jeszcze nie sprawdzono, null = brak pliku
+let cachedLogoDataUrl = undefined;
 
 function loadScript(src) {
   return new Promise((resolve, reject) => {
@@ -12,6 +12,10 @@ function loadScript(src) {
     if (existing) {
       if (existing.dataset.loaded === 'true') {
         resolve();
+        return;
+      }
+      if (existing.dataset.error === 'true') {
+        reject(new Error(`Zablokowano lub nie udało się wczytać skryptu: ${src}`));
         return;
       }
       existing.addEventListener('load', () => resolve(), { once: true });
@@ -26,24 +30,31 @@ function loadScript(src) {
       script.dataset.loaded = 'true';
       resolve();
     };
-    script.onerror = () => reject(new Error(`Nie udało się załadować: ${src}`));
+    script.onerror = () => {
+      script.dataset.error = 'true';
+      reject(new Error(`Nie udało się załadować: ${src} (sprawdź połączenie lub adblockera)`));
+    };
     document.head.appendChild(script);
   });
 }
 
 async function ensurePdfMake() {
-  if (window.pdfMake && window.pdfMake.createPdf) {
+  if (window.pdfMake && typeof window.pdfMake.createPdf === 'function') {
     return window.pdfMake;
   }
   if (!pdfMakeLoaderPromise) {
     pdfMakeLoaderPromise = (async () => {
       await loadScript(PDFMAKE_CDN);
       await loadScript(VFS_FONTS_CDN);
-      if (!window.pdfMake) {
-        throw new Error('Biblioteka pdfMake nie została zainicjalizowana.');
+      if (!window.pdfMake || typeof window.pdfMake.createPdf !== 'function') {
+        throw new Error('Biblioteka pdfMake nie została poprawnie zainicjalizowana.');
       }
       return window.pdfMake;
-    })();
+    })().catch((err) => {
+      // Pozwól spróbować ponownie przy kolejnym kliknięciu zamiast zapamiętywać błąd na stałe
+      pdfMakeLoaderPromise = null;
+      throw err;
+    });
   }
   return pdfMakeLoaderPromise;
 }
@@ -58,6 +69,11 @@ async function getLogoDataUrl() {
       cachedLogoDataUrl = null;
       return null;
     }
+    const contentType = res.headers.get('content-type') || '';
+    if (!contentType.startsWith('image/')) {
+      cachedLogoDataUrl = null;
+      return null;
+    }
     const blob = await res.blob();
     const dataUrl = await new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -65,7 +81,7 @@ async function getLogoDataUrl() {
       reader.onerror = reject;
       reader.readAsDataURL(blob);
     });
-    cachedLogoDataUrl = typeof dataUrl === 'string' ? dataUrl : null;
+    cachedLogoDataUrl = typeof dataUrl === 'string' && dataUrl.startsWith('data:image/') ? dataUrl : null;
     return cachedLogoDataUrl;
   } catch {
     cachedLogoDataUrl = null;
@@ -97,7 +113,6 @@ export async function generateEstimatePdf(estimate) {
 
   const items = Array.isArray(estimate.items) ? estimate.items : [];
 
-  // Budowanie wierszy tabeli
   const tableBody = [
     [
       { text: 'Lp.', style: 'th', alignment: 'center' },
@@ -138,7 +153,6 @@ export async function generateEstimatePdf(estimate) {
       const subValue = runningSubtotal;
       runningSubtotal = 0;
 
-      // ~20% szarego tła (#cccccc) z czarnym tekstem
       tableBody.push([
         {
           colSpan: 6,
@@ -162,7 +176,6 @@ export async function generateEstimatePdf(estimate) {
       return;
     }
 
-    // Pozycja usługi lub "Inne"
     lp += 1;
     const qty = Math.max(0, Math.floor(Number(item.qty) || 0));
     const unitPrice = Number(item.price) || 0;
@@ -214,7 +227,6 @@ export async function generateEstimatePdf(estimate) {
       }
     ]);
 
-    // Wcięty wiersz notatek bezpośrednio pod pozycją
     if (hasNote) {
       tableBody.push([
         {
@@ -241,7 +253,6 @@ export async function generateEstimatePdf(estimate) {
   );
   const finalTotal = Math.max(0, grossBeforeGlobal - globalDiscountAmt);
 
-  // Prawa kolumna nagłówka (logo + ramka Dla / Ważna od / Ważna do)
   const rightHeaderStack = [];
   if (logoDataUrl) {
     rightHeaderStack.push({
@@ -302,7 +313,6 @@ export async function generateEstimatePdf(estimate) {
       lineHeight: 1.25
     },
     content: [
-      // NAGŁÓWEK DOKUMENTU
       {
         columns: [
           {
@@ -331,8 +341,6 @@ export async function generateEstimatePdf(estimate) {
         columnGap: 16,
         margin: [0, 0, 0, 14]
       },
-
-      // GŁÓWNA TABELA POZYCJI
       {
         table: {
           headerRows: 1,
@@ -352,8 +360,6 @@ export async function generateEstimatePdf(estimate) {
         },
         margin: [0, 0, 0, 14]
       },
-
-      // DOLNY BLOK: TERMIN + PODSUMOWANIE 2x2 + KLAUZULE + DANE FIRMY + PODPIS
       {
         unbreakable: true,
         stack: [
@@ -408,8 +414,6 @@ export async function generateEstimatePdf(estimate) {
             columnGap: 16,
             margin: [0, 0, 0, 14]
           },
-
-          // Zastrzeżenie (nie jest ofertą handlową)
           {
             text: 'Powyższa wycena nie jest ofertą handlową. Koszt projektu może się różnić w zależności od zmiany parametrów projektu.',
             fontSize: 8.5,
@@ -417,8 +421,6 @@ export async function generateEstimatePdf(estimate) {
             color: '#374151',
             margin: [0, 0, 0, 12]
           },
-
-          // Dane firmy + oświadczenie i podpis zleceniodawcy
           {
             columns: [
               {
@@ -473,5 +475,14 @@ export async function generateEstimatePdf(estimate) {
   const clientPart = sanitizeFileName(estimate.client || '');
   const fileName = clientPart ? `Kosztorys_${titlePart}_${clientPart}.pdf` : `Kosztorys_${titlePart}.pdf`;
 
-  pdfMake.createPdf(docDefinition).download(fileName);
+  const doc = pdfMake.createPdf(docDefinition);
+  await new Promise((resolve, reject) => {
+    try {
+      doc.download(fileName, () => resolve());
+      // Awaryjnie domknij promise po krótkim czasie, gdyby callback nie odpalił w danej przeglądarce
+      setTimeout(resolve, 600);
+    } catch (err) {
+      reject(err);
+    }
+  });
 }
