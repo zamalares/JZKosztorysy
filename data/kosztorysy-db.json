@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T10:43:55.411Z"
+    "updatedAt": "2026-11-24T10:44:38.202Z"
   },
   "priceList": [
     {
@@ -69,6 +69,50 @@
     }
   ],
   "estimates": [
+    {
+      "id": "est-1795517066301-0kws",
+      "status": "final",
+      "archived": false,
+      "title": "qwer",
+      "client": "qwert",
+      "validFrom": "2026-11-24",
+      "validTo": "2026-12-08",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795517070689-bbi",
+          "type": "service",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 250,
+          "color": "#fef7dc",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517073521-7j1",
+          "type": "service",
+          "sourceServiceId": "srv-8",
+          "name": "Mix do 6 min utworu - 20-50 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 1000,
+          "color": "#f1eafe",
+          "discount": "",
+          "note": ""
+        }
+      ],
+      "createdAt": "2026-11-24T10:44:26.301Z",
+      "updatedAt": "2026-11-24T10:44:38.202Z",
+      "finalizedAt": "2026-11-24T10:44:38.202Z",
+      "summary": {
+        "gross": 1250,
+        "discount": 0,
+        "total": 1250
+      }
+    },
     {
       "id": "est-1795517035410-xwno",
       "status": "final",
