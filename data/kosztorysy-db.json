@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:21:49.662Z"
+    "updatedAt": "2026-11-24T12:22:03.122Z"
   },
   "priceList": [
     {
@@ -244,35 +244,35 @@
     },
     {
       "id": "srv-1795522380945",
-      "name": "Mix do 6 min utworu, Standard, 20-50 ścieżek",
+      "name": "Mix do 6 min utworu, Standard, 20-50 ścieżek (max. trzy wersje miksu)",
       "unit": "Utwór",
       "price": 1000,
       "color": "#e8f1ff"
     },
     {
       "id": "srv-1795522382299",
-      "name": "Mix do 6 min utworu, Large, Ponad 50 ścieżek",
+      "name": "Mix do 6 min utworu, Large, Ponad 50 ścieżek (max. trzy wersje miksu)",
       "unit": "Utwór",
       "price": 1600,
       "color": "#e8f1ff"
     },
     {
       "id": "srv-1795522383849",
-      "name": "Mix powyżej 6 min utworu, Small, Do 20 ścieżek",
+      "name": "Mix powyżej 6 min utworu, Small, Do 20 ścieżek (max. trzy wersje miksu)",
       "unit": "Utwór",
       "price": 1000,
       "color": "#e6f7ed"
     },
     {
       "id": "srv-1795522386029",
-      "name": "Mix powyżej 6 min utworu, Standard, 20-50 ścieżek",
+      "name": "Mix powyżej 6 min utworu, Standard, 20-50 ścieżek (max. trzy wersje miksu)",
       "unit": "Utwór",
       "price": 1550,
       "color": "#e6f7ed"
     },
     {
       "id": "srv-1795522544912",
-      "name": "Mix powyżej 6 min utworu, Large, Ponad 50 ścieżek",
+      "name": "Mix powyżej 6 min utworu, Large, Ponad 50 ścieżek (max. trzy wersje miksu)",
       "unit": "Utwór",
       "price": 2500,
       "color": "#e6f7ed"
