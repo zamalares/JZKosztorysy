@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:18:36.430Z"
+    "updatedAt": "2026-11-24T12:19:20.707Z"
   },
   "priceList": [
     {
@@ -293,16 +293,16 @@
     },
     {
       "id": "srv-1795522634292",
-      "name": "",
-      "unit": "usł.",
-      "price": 0,
+      "name": "Mix pełny (nie poprawki) w obecności klienta – płatność dodatkowa",
+      "unit": "h.",
+      "price": 150,
       "color": "#ffffff"
     },
     {
       "id": "srv-1795522636016",
-      "name": "",
-      "unit": "usł.",
-      "price": 0,
+      "name": "Mastering",
+      "unit": "Utwór",
+      "price": 200,
       "color": "#ffffff"
     },
     {
