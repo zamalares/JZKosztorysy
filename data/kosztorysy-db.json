@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:22:05.017Z"
+    "updatedAt": "2026-11-24T11:22:33.923Z"
   },
   "priceList": [
     {
@@ -21,51 +21,51 @@
     {
       "id": "srv-3",
       "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, partytura, 13-20 instrumentów",
-      "unit": "usł.",
+      "unit": "min",
       "price": 670,
       "color": "#e8f1ff"
     },
     {
       "id": "srv-4",
       "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, partytura, 21-35 instrumentów",
-      "unit": "usł.",
+      "unit": "min",
       "price": 1100,
       "color": "#e8f1ff"
     },
     {
       "id": "srv-5",
       "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, partytura, powyżej 35 instrumentów",
-      "unit": "h.",
+      "unit": "min",
       "price": 1700,
       "color": "#e8f1ff"
     },
     {
       "id": "srv-6",
       "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, LEAD SHEET",
-      "unit": "h.",
+      "unit": "min",
       "price": 200,
       "color": "#e6f7ed"
     },
     {
       "id": "srv-7",
-      "name": "Mix do 6 min utworu - Do 20 ścieżek",
-      "unit": "usł.",
+      "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, ",
+      "unit": "min",
       "price": 550,
-      "color": "#f1eafe"
+      "color": "#e6f7ed"
     },
     {
       "id": "srv-8",
-      "name": "Mix do 6 min utworu - 20-50 ścieżek",
-      "unit": "usł.",
+      "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, ",
+      "unit": "min",
       "price": 1000,
-      "color": "#f1eafe"
+      "color": "#e6f7ed"
     },
     {
       "id": "srv-9",
-      "name": "Mastering",
-      "unit": "Utwór",
+      "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, ",
+      "unit": "min",
       "price": 200,
-      "color": "#f1eafe"
+      "color": "#e6f7ed"
     }
   ],
   "estimates": [],
