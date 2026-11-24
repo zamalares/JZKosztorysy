@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T10:44:38.202Z"
+    "updatedAt": "2026-11-24T10:46:56.048Z"
   },
   "priceList": [
     {
@@ -68,193 +68,10 @@
       "color": "#f1eafe"
     }
   ],
-  "estimates": [
+  "estimates": [],
+  "trash": [
     {
-      "id": "est-1795517066301-0kws",
-      "status": "final",
-      "archived": false,
-      "title": "qwer",
-      "client": "qwert",
-      "validFrom": "2026-11-24",
-      "validTo": "2026-12-08",
-      "globalDiscount": "",
-      "items": [
-        {
-          "id": "line-1795517070689-bbi",
-          "type": "service",
-          "sourceServiceId": "srv-4",
-          "name": "Wynajem sesyjnego muzyka",
-          "unit": "usł.",
-          "qty": 1,
-          "price": 250,
-          "color": "#fef7dc",
-          "discount": "",
-          "note": ""
-        },
-        {
-          "id": "line-1795517073521-7j1",
-          "type": "service",
-          "sourceServiceId": "srv-8",
-          "name": "Mix do 6 min utworu - 20-50 ścieżek",
-          "unit": "usł.",
-          "qty": 1,
-          "price": 1000,
-          "color": "#f1eafe",
-          "discount": "",
-          "note": ""
-        }
-      ],
-      "createdAt": "2026-11-24T10:44:26.301Z",
-      "updatedAt": "2026-11-24T10:44:38.202Z",
-      "finalizedAt": "2026-11-24T10:44:38.202Z",
-      "summary": {
-        "gross": 1250,
-        "discount": 0,
-        "total": 1250
-      }
-    },
-    {
-      "id": "est-1795517035410-xwno",
-      "status": "final",
-      "archived": false,
-      "title": "asdf",
-      "client": "asdfg",
-      "validFrom": "2026-11-24",
-      "validTo": "2026-12-08",
-      "globalDiscount": "",
-      "items": [
-        {
-          "id": "line-1795517015032-sxp",
-          "type": "service",
-          "sourceServiceId": "srv-2",
-          "name": "MUZYKA ROZRYWKOWA - ARANŻACJA; pilot audio; 6-19 instrumentów",
-          "unit": "min.",
-          "qty": 1,
-          "price": 390,
-          "color": "#e8f1ff",
-          "discount": "",
-          "note": ""
-        },
-        {
-          "id": "line-1795517018770-jmu",
-          "type": "service",
-          "sourceServiceId": "srv-6",
-          "name": "Edycja głęboka śladów - intonacja, timing",
-          "unit": "h.",
-          "qty": 1,
-          "price": 200,
-          "color": "#ffece4",
-          "discount": "",
-          "note": ""
-        }
-      ],
-      "createdAt": "2026-11-24T10:43:23.970Z",
-      "updatedAt": "2026-11-24T10:43:55.410Z",
-      "finalizedAt": "2026-11-24T10:43:55.410Z",
-      "summary": {
-        "gross": 590,
-        "discount": 0,
-        "total": 590
-      }
-    },
-    {
-      "id": "est-1795517003970-7k61",
-      "status": "final",
-      "archived": false,
-      "title": "asdf",
-      "client": "asdfg",
-      "validFrom": "2026-11-24",
-      "validTo": "2026-12-08",
-      "globalDiscount": "",
-      "items": [
-        {
-          "id": "line-1795517015032-sxp",
-          "type": "service",
-          "sourceServiceId": "srv-2",
-          "name": "MUZYKA ROZRYWKOWA - ARANŻACJA; pilot audio; 6-19 instrumentów",
-          "unit": "min.",
-          "qty": 1,
-          "price": 390,
-          "color": "#e8f1ff",
-          "discount": "",
-          "note": ""
-        },
-        {
-          "id": "line-1795517018770-jmu",
-          "type": "service",
-          "sourceServiceId": "srv-6",
-          "name": "Edycja głęboka śladów - intonacja, timing",
-          "unit": "h.",
-          "qty": 1,
-          "price": 200,
-          "color": "#ffece4",
-          "discount": "",
-          "note": ""
-        }
-      ],
-      "createdAt": "2026-11-24T10:43:23.970Z",
-      "updatedAt": "2026-11-24T10:43:45.710Z",
-      "finalizedAt": "2026-11-24T10:43:45.711Z",
-      "summary": {
-        "gross": 590,
-        "discount": 0,
-        "total": 590
-      }
-    },
-    {
-      "id": "est-1795516766685-opll",
-      "status": "final",
-      "archived": false,
-      "title": "fdre",
-      "client": "fedr",
-      "validFrom": "2026-11-23",
-      "validTo": "2026-12-07",
-      "globalDiscount": "-23",
-      "items": [
-        {
-          "id": "line-1795443545395-qbq",
-          "type": "service",
-          "sourceServiceId": "srv-4",
-          "name": "Wynajem sesyjnego muzyka",
-          "unit": "usł.",
-          "qty": 1,
-          "price": 250,
-          "discount": "10%",
-          "note": "Ale dobrze"
-        },
-        {
-          "id": "line-1795443553069-621",
-          "type": "service",
-          "sourceServiceId": "srv-7",
-          "name": "Mix do 6 min utworu - Do 20 ścieżek",
-          "unit": "usł.",
-          "qty": 1,
-          "price": 550,
-          "discount": "",
-          "note": ""
-        },
-        {
-          "id": "sub-1795443582189-0ki",
-          "type": "subtotal",
-          "label": "Suma częściowa"
-        },
-        {
-          "id": "sep-1795443586281-v01",
-          "type": "separator",
-          "label": ""
-        }
-      ],
-      "createdAt": "2026-11-23T14:18:50.374Z",
-      "updatedAt": "2026-11-24T10:39:26.685Z",
-      "summary": {
-        "gross": 775,
-        "discount": 23,
-        "total": 752
-      },
-      "finalizedAt": "2026-11-24T10:39:26.685Z"
-    },
-    {
-      "id": "est-1795445657622-7w29",
+      "id": "est-1795444048900-jeex",
       "status": "final",
       "archived": false,
       "title": "Marcin Obłoza",
@@ -346,13 +163,157 @@
         }
       ],
       "createdAt": "2026-11-23T14:27:28.900Z",
-      "updatedAt": "2026-11-23T14:54:17.622Z",
+      "updatedAt": "2026-11-24T10:41:53.760Z",
       "summary": {
         "gross": 4010,
         "discount": 24,
         "total": 3986
       },
-      "finalizedAt": "2026-11-23T14:54:17.622Z"
+      "finalizedAt": "2026-11-24T10:41:53.760Z",
+      "deletedAt": "2026-11-24T10:46:41.037Z"
+    },
+    {
+      "id": "est-1795441970303-v0wq",
+      "status": "draft",
+      "archived": false,
+      "title": "",
+      "client": "",
+      "validFrom": "2026-11-23",
+      "validTo": "2026-12-07",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795441977779-9bq",
+          "type": "service",
+          "sourceServiceId": "srv-2",
+          "name": "MUZYKA ROZRYWKOWA - ARANŻACJA; pilot audio; 6-19 instrumentów",
+          "unit": "min.",
+          "qty": 5,
+          "price": 390,
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795441980928-xrp",
+          "type": "service",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 250,
+          "discount": "",
+          "note": ""
+        }
+      ],
+      "createdAt": "2026-11-23T13:52:50.303Z",
+      "updatedAt": "2026-11-23T13:53:14.483Z",
+      "summary": {
+        "gross": 2200,
+        "discount": 0,
+        "total": 2200
+      },
+      "deletedAt": "2026-11-24T10:46:40.183Z"
+    },
+    {
+      "id": "est-1795443530374-ooa0",
+      "status": "final",
+      "archived": false,
+      "title": "fdre",
+      "client": "fedr",
+      "validFrom": "2026-11-23",
+      "validTo": "2026-12-07",
+      "globalDiscount": "-23",
+      "items": [
+        {
+          "id": "line-1795443545395-qbq",
+          "type": "service",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 250,
+          "discount": "10%",
+          "note": "Ale dobrze"
+        },
+        {
+          "id": "line-1795443553069-621",
+          "type": "service",
+          "sourceServiceId": "srv-7",
+          "name": "Mix do 6 min utworu - Do 20 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 550,
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "sub-1795443582189-0ki",
+          "type": "subtotal",
+          "label": "Suma częściowa"
+        },
+        {
+          "id": "sep-1795443586281-v01",
+          "type": "separator",
+          "label": ""
+        }
+      ],
+      "createdAt": "2026-11-23T14:18:50.374Z",
+      "updatedAt": "2026-11-24T10:36:52.744Z",
+      "summary": {
+        "gross": 775,
+        "discount": 23,
+        "total": 752
+      },
+      "finalizedAt": "2026-11-24T10:36:52.745Z",
+      "deletedAt": "2026-11-24T10:46:39.169Z"
+    },
+    {
+      "id": "est-1795443990773-pje3",
+      "status": "final",
+      "archived": false,
+      "title": "Ala",
+      "client": "lala",
+      "validFrom": "2026-11-23",
+      "validTo": "2026-12-07",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795444007131-zv6",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795444012586-49s",
+          "type": "service",
+          "sourceServiceId": "srv-1",
+          "name": "MUZYKA ROZRYWKOWA - KOMPOZYCJA; pilot audio; do 5 instrumentów",
+          "unit": "min.",
+          "qty": 1,
+          "price": 240,
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "sub-1795444014688-8sm",
+          "type": "subtotal",
+          "label": "Suma częściowa"
+        }
+      ],
+      "createdAt": "2026-11-23T14:26:30.774Z",
+      "updatedAt": "2026-11-24T10:40:33.791Z",
+      "summary": {
+        "gross": 420,
+        "discount": 0,
+        "total": 420
+      },
+      "finalizedAt": "2026-11-24T10:40:33.791Z",
+      "deletedAt": "2026-11-24T10:46:38.809Z"
     },
     {
       "id": "est-1795445572211-r6yh",
@@ -453,57 +414,113 @@
         "discount": 24,
         "total": 3986
       },
-      "finalizedAt": "2026-11-23T14:52:52.211Z"
+      "finalizedAt": "2026-11-23T14:52:52.211Z",
+      "deletedAt": "2026-11-24T10:46:38.411Z"
     },
     {
-      "id": "est-1795443990773-pje3",
+      "id": "est-1795445657622-7w29",
       "status": "final",
       "archived": false,
-      "title": "Ala",
-      "client": "lala",
+      "title": "Marcin Obłoza",
+      "client": "Płyta",
       "validFrom": "2026-11-23",
       "validTo": "2026-12-07",
-      "globalDiscount": "",
+      "globalDiscount": "-24",
       "items": [
         {
-          "id": "line-1795444007131-zv6",
+          "id": "line-1795444055674-wja",
           "type": "service",
           "sourceServiceId": "srv-5",
           "name": "Nagranie studyjne",
           "unit": "h.",
-          "qty": 1,
+          "qty": 8,
           "price": 180,
           "discount": "",
-          "note": ""
+          "note": "wokal"
         },
         {
-          "id": "line-1795444012586-49s",
+          "id": "line-1795444297133-f97",
           "type": "service",
-          "sourceServiceId": "srv-1",
-          "name": "MUZYKA ROZRYWKOWA - KOMPOZYCJA; pilot audio; do 5 instrumentów",
-          "unit": "min.",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 5,
+          "price": 250,
+          "discount": "",
+          "note": "gitara"
+        },
+        {
+          "id": "line-1795444300119-cv3",
+          "type": "service",
+          "sourceServiceId": "srv-7",
+          "name": "Mix do 6 min utworu - Do 20 ścieżek",
+          "unit": "usł.",
           "qty": 1,
-          "price": 240,
+          "price": 550,
           "discount": "",
           "note": ""
         },
         {
-          "id": "sub-1795444014688-8sm",
-          "type": "subtotal",
-          "label": "Suma częściowa"
+          "id": "line-1795444302907-taq",
+          "type": "service",
+          "sourceServiceId": "srv-9",
+          "name": "Mastering",
+          "unit": "Utwór",
+          "qty": 1,
+          "price": 200,
+          "discount": "10%",
+          "note": ""
+        },
+        {
+          "id": "line-1795444355369-sdr",
+          "type": "custom",
+          "name": "skrobiemy",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 0,
+          "discount": "",
+          "note": "szyby"
+        },
+        {
+          "id": "sep-1795444398367-j72",
+          "type": "separator",
+          "label": ""
+        },
+        {
+          "id": "line-1795444403157-38b",
+          "type": "service",
+          "sourceServiceId": "srv-9",
+          "name": "Mastering",
+          "unit": "Utwór",
+          "qty": 1,
+          "price": 200,
+          "discount": "",
+          "note": "aaa"
+        },
+        {
+          "id": "line-1795444411213-v1i",
+          "type": "service",
+          "sourceServiceId": "srv-2",
+          "name": "MUZYKA ROZRYWKOWA - ARANŻACJA; pilot audio; 6-19 instrumentów",
+          "unit": "min.",
+          "qty": 1,
+          "price": 390,
+          "discount": "",
+          "note": "bbb"
         }
       ],
-      "createdAt": "2026-11-23T14:26:30.774Z",
-      "updatedAt": "2026-11-24T10:40:33.791Z",
+      "createdAt": "2026-11-23T14:27:28.900Z",
+      "updatedAt": "2026-11-23T14:54:17.622Z",
       "summary": {
-        "gross": 420,
-        "discount": 0,
-        "total": 420
+        "gross": 4010,
+        "discount": 24,
+        "total": 3986
       },
-      "finalizedAt": "2026-11-24T10:40:33.791Z"
+      "finalizedAt": "2026-11-23T14:54:17.622Z",
+      "deletedAt": "2026-11-24T10:46:37.995Z"
     },
     {
-      "id": "est-1795443530374-ooa0",
+      "id": "est-1795516766685-opll",
       "status": "final",
       "archived": false,
       "title": "fdre",
@@ -546,256 +563,149 @@
         }
       ],
       "createdAt": "2026-11-23T14:18:50.374Z",
-      "updatedAt": "2026-11-24T10:36:52.744Z",
+      "updatedAt": "2026-11-24T10:39:26.685Z",
       "summary": {
         "gross": 775,
         "discount": 23,
         "total": 752
       },
-      "finalizedAt": "2026-11-24T10:36:52.745Z"
+      "finalizedAt": "2026-11-24T10:39:26.685Z",
+      "deletedAt": "2026-11-24T10:46:37.605Z"
     },
     {
-      "id": "est-1795441970303-v0wq",
-      "status": "draft",
+      "id": "est-1795517003970-7k61",
+      "status": "final",
       "archived": false,
-      "title": "",
-      "client": "",
-      "validFrom": "2026-11-23",
-      "validTo": "2026-12-07",
+      "title": "asdf",
+      "client": "asdfg",
+      "validFrom": "2026-11-24",
+      "validTo": "2026-12-08",
       "globalDiscount": "",
       "items": [
         {
-          "id": "line-1795441977779-9bq",
+          "id": "line-1795517015032-sxp",
           "type": "service",
           "sourceServiceId": "srv-2",
           "name": "MUZYKA ROZRYWKOWA - ARANŻACJA; pilot audio; 6-19 instrumentów",
           "unit": "min.",
-          "qty": 5,
+          "qty": 1,
           "price": 390,
+          "color": "#e8f1ff",
           "discount": "",
           "note": ""
         },
         {
-          "id": "line-1795441980928-xrp",
+          "id": "line-1795517018770-jmu",
           "type": "service",
-          "sourceServiceId": "srv-4",
-          "name": "Wynajem sesyjnego muzyka",
-          "unit": "usł.",
+          "sourceServiceId": "srv-6",
+          "name": "Edycja głęboka śladów - intonacja, timing",
+          "unit": "h.",
           "qty": 1,
-          "price": 250,
+          "price": 200,
+          "color": "#ffece4",
           "discount": "",
           "note": ""
         }
       ],
-      "createdAt": "2026-11-23T13:52:50.303Z",
-      "updatedAt": "2026-11-23T13:53:14.483Z",
+      "createdAt": "2026-11-24T10:43:23.970Z",
+      "updatedAt": "2026-11-24T10:43:45.710Z",
+      "finalizedAt": "2026-11-24T10:43:45.711Z",
       "summary": {
-        "gross": 2200,
+        "gross": 590,
         "discount": 0,
-        "total": 2200
-      }
+        "total": 590
+      },
+      "deletedAt": "2026-11-24T10:46:37.179Z"
     },
     {
-      "id": "est-1795444048900-jeex",
+      "id": "est-1795517035410-xwno",
       "status": "final",
       "archived": false,
-      "title": "Marcin Obłoza",
-      "client": "Płyta",
-      "validFrom": "2026-11-23",
-      "validTo": "2026-12-07",
-      "globalDiscount": "-24",
+      "title": "asdf",
+      "client": "asdfg",
+      "validFrom": "2026-11-24",
+      "validTo": "2026-12-08",
+      "globalDiscount": "",
       "items": [
         {
-          "id": "line-1795444055674-wja",
-          "type": "service",
-          "sourceServiceId": "srv-5",
-          "name": "Nagranie studyjne",
-          "unit": "h.",
-          "qty": 8,
-          "price": 180,
-          "discount": "",
-          "note": "wokal"
-        },
-        {
-          "id": "line-1795444297133-f97",
-          "type": "service",
-          "sourceServiceId": "srv-4",
-          "name": "Wynajem sesyjnego muzyka",
-          "unit": "usł.",
-          "qty": 5,
-          "price": 250,
-          "discount": "",
-          "note": "gitara"
-        },
-        {
-          "id": "line-1795444300119-cv3",
-          "type": "service",
-          "sourceServiceId": "srv-7",
-          "name": "Mix do 6 min utworu - Do 20 ścieżek",
-          "unit": "usł.",
-          "qty": 1,
-          "price": 550,
-          "discount": "",
-          "note": ""
-        },
-        {
-          "id": "line-1795444302907-taq",
-          "type": "service",
-          "sourceServiceId": "srv-9",
-          "name": "Mastering",
-          "unit": "Utwór",
-          "qty": 1,
-          "price": 200,
-          "discount": "10%",
-          "note": ""
-        },
-        {
-          "id": "line-1795444355369-sdr",
-          "type": "custom",
-          "name": "skrobiemy",
-          "unit": "usł.",
-          "qty": 1,
-          "price": 0,
-          "discount": "",
-          "note": "szyby"
-        },
-        {
-          "id": "sep-1795444398367-j72",
-          "type": "separator",
-          "label": ""
-        },
-        {
-          "id": "line-1795444403157-38b",
-          "type": "service",
-          "sourceServiceId": "srv-9",
-          "name": "Mastering",
-          "unit": "Utwór",
-          "qty": 1,
-          "price": 200,
-          "discount": "",
-          "note": "aaa"
-        },
-        {
-          "id": "line-1795444411213-v1i",
+          "id": "line-1795517015032-sxp",
           "type": "service",
           "sourceServiceId": "srv-2",
           "name": "MUZYKA ROZRYWKOWA - ARANŻACJA; pilot audio; 6-19 instrumentów",
           "unit": "min.",
           "qty": 1,
           "price": 390,
+          "color": "#e8f1ff",
           "discount": "",
-          "note": "bbb"
+          "note": ""
+        },
+        {
+          "id": "line-1795517018770-jmu",
+          "type": "service",
+          "sourceServiceId": "srv-6",
+          "name": "Edycja głęboka śladów - intonacja, timing",
+          "unit": "h.",
+          "qty": 1,
+          "price": 200,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
         }
       ],
-      "createdAt": "2026-11-23T14:27:28.900Z",
-      "updatedAt": "2026-11-24T10:41:53.760Z",
+      "createdAt": "2026-11-24T10:43:23.970Z",
+      "updatedAt": "2026-11-24T10:43:55.410Z",
+      "finalizedAt": "2026-11-24T10:43:55.410Z",
       "summary": {
-        "gross": 4010,
-        "discount": 24,
-        "total": 3986
+        "gross": 590,
+        "discount": 0,
+        "total": 590
       },
-      "finalizedAt": "2026-11-24T10:41:53.760Z"
+      "deletedAt": "2026-11-24T10:46:36.633Z"
     },
     {
-      "id": "est-1795444048900-jeex",
-      "status": "draft",
+      "id": "est-1795517066301-0kws",
+      "status": "final",
       "archived": false,
-      "title": "Marcin Obłoza",
-      "client": "Płyta",
-      "validFrom": "2026-11-23",
-      "validTo": "2026-12-07",
-      "globalDiscount": "-24",
+      "title": "qwer",
+      "client": "qwert",
+      "validFrom": "2026-11-24",
+      "validTo": "2026-12-08",
+      "globalDiscount": "",
       "items": [
         {
-          "id": "line-1795444055674-wja",
-          "type": "service",
-          "sourceServiceId": "srv-5",
-          "name": "Nagranie studyjne",
-          "unit": "h.",
-          "qty": 8,
-          "price": 180,
-          "discount": "",
-          "note": "wokal"
-        },
-        {
-          "id": "line-1795444297133-f97",
+          "id": "line-1795517070689-bbi",
           "type": "service",
           "sourceServiceId": "srv-4",
           "name": "Wynajem sesyjnego muzyka",
           "unit": "usł.",
-          "qty": 5,
+          "qty": 1,
           "price": 250,
-          "discount": "",
-          "note": "gitara"
-        },
-        {
-          "id": "line-1795444300119-cv3",
-          "type": "service",
-          "sourceServiceId": "srv-7",
-          "name": "Mix do 6 min utworu - Do 20 ścieżek",
-          "unit": "usł.",
-          "qty": 1,
-          "price": 550,
+          "color": "#fef7dc",
           "discount": "",
           "note": ""
         },
         {
-          "id": "line-1795444302907-taq",
+          "id": "line-1795517073521-7j1",
           "type": "service",
-          "sourceServiceId": "srv-9",
-          "name": "Mastering",
-          "unit": "Utwór",
-          "qty": 1,
-          "price": 200,
-          "discount": "10%",
-          "note": ""
-        },
-        {
-          "id": "line-1795444355369-sdr",
-          "type": "custom",
-          "name": "skrobiemy",
+          "sourceServiceId": "srv-8",
+          "name": "Mix do 6 min utworu - 20-50 ścieżek",
           "unit": "usł.",
           "qty": 1,
-          "price": 0,
+          "price": 1000,
+          "color": "#f1eafe",
           "discount": "",
-          "note": "szyby"
-        },
-        {
-          "id": "sep-1795444398367-j72",
-          "type": "separator",
-          "label": ""
-        },
-        {
-          "id": "line-1795444403157-38b",
-          "type": "service",
-          "sourceServiceId": "srv-9",
-          "name": "Mastering",
-          "unit": "Utwór",
-          "qty": 1,
-          "price": 200,
-          "discount": "",
-          "note": "aaa"
-        },
-        {
-          "id": "line-1795444411213-v1i",
-          "type": "service",
-          "sourceServiceId": "srv-2",
-          "name": "MUZYKA ROZRYWKOWA - ARANŻACJA; pilot audio; 6-19 instrumentów",
-          "unit": "min.",
-          "qty": 1,
-          "price": 390,
-          "discount": "",
-          "note": "bbb"
+          "note": ""
         }
       ],
-      "createdAt": "2026-11-23T14:27:28.900Z",
-      "updatedAt": "2026-11-23T14:33:37.690Z",
+      "createdAt": "2026-11-24T10:44:26.301Z",
+      "updatedAt": "2026-11-24T10:44:38.202Z",
+      "finalizedAt": "2026-11-24T10:44:38.202Z",
       "summary": {
-        "gross": 4010,
-        "discount": 24,
-        "total": 3986
-      }
+        "gross": 1250,
+        "discount": 0,
+        "total": 1250
+      },
+      "deletedAt": "2026-11-24T10:46:35.559Z"
     }
-  ],
-  "trash": []
+  ]
 }
