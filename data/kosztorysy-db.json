@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:19:20.707Z"
+    "updatedAt": "2026-11-24T12:20:10.727Z"
   },
   "priceList": [
     {
@@ -282,42 +282,42 @@
       "name": "Render i wysłanie stemów/ścieżek po dokonaniu mixu, Paczka (do 8 stemów)",
       "unit": "Paczka",
       "price": 150,
-      "color": "#ffffff"
+      "color": "#fef7dc"
     },
     {
       "id": "srv-1795522632150",
       "name": "Render i wysłanie stemów/ścieżek po dokonaniu mixu, Dodatkowe stemy",
       "unit": "szt.",
       "price": 20,
-      "color": "#ffffff"
+      "color": "#fef7dc"
     },
     {
       "id": "srv-1795522634292",
       "name": "Mix pełny (nie poprawki) w obecności klienta – płatność dodatkowa",
       "unit": "h.",
       "price": 150,
-      "color": "#ffffff"
+      "color": "#e8f1ff"
     },
     {
       "id": "srv-1795522636016",
       "name": "Mastering",
       "unit": "Utwór",
       "price": 200,
-      "color": "#ffffff"
+      "color": "#e6f7ed"
     },
     {
       "id": "srv-1795522637806",
-      "name": "",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "Stem Mastering",
+      "unit": "Utwór",
+      "price": 600,
+      "color": "#e6f7ed"
     },
     {
       "id": "srv-1795522639544",
-      "name": "",
+      "name": "DDP albumu",
       "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "price": 250,
+      "color": "#f1eafe"
     }
   ],
   "estimates": [],
