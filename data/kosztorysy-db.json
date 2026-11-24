@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T10:58:12.446Z"
+    "updatedAt": "2026-11-24T10:59:09.515Z"
   },
   "priceList": [
     {
@@ -69,6 +69,240 @@
     }
   ],
   "estimates": [
+    {
+      "id": "est-1795517949514-zo28",
+      "status": "final",
+      "archived": false,
+      "title": "Produkcja piosenki - czas ma wielkie ofjsnga asdfgpoasdfg i ciężkie oczy w nocy kiedy śpię",
+      "client": "zygmunt broniweski do lata będzie się to ciągnęło ojhbfg adfgohad adfnbapdsfhgna asdfgpadn",
+      "validFrom": "2026-11-24",
+      "validTo": "2026-12-08",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795517856834-zgq",
+          "type": "service",
+          "sourceServiceId": "srv-3",
+          "name": "Zrealizowanie pojedynczej partii - brzmienia vsti - do 5 min",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 300,
+          "color": "#e6f7ed",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517860172-wy8",
+          "type": "service",
+          "sourceServiceId": "srv-8",
+          "name": "Mix do 6 min utworu - 20-50 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 1000,
+          "color": "#f1eafe",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517862308-7g4",
+          "type": "service",
+          "sourceServiceId": "srv-1",
+          "name": "MUZYKA ROZRYWKOWA - KOMPOZYCJA; pilot audio; do 5 instrumentów",
+          "unit": "min.",
+          "qty": 1,
+          "price": 240,
+          "color": "#ffffff",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517865812-157",
+          "type": "service",
+          "sourceServiceId": "srv-8",
+          "name": "Mix do 6 min utworu - 20-50 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 1000,
+          "color": "#f1eafe",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "sep-1795517871450-53e",
+          "type": "separator",
+          "label": ""
+        },
+        {
+          "id": "sub-1795517871886-de2",
+          "type": "subtotal",
+          "label": "Suma częściowa"
+        },
+        {
+          "id": "line-1795517874368-h7j",
+          "type": "service",
+          "sourceServiceId": "srv-8",
+          "name": "Mix do 6 min utworu - 20-50 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 1000,
+          "color": "#f1eafe",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517880506-1yn",
+          "type": "service",
+          "sourceServiceId": "srv-8",
+          "name": "Mix do 6 min utworu - 20-50 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 1000,
+          "color": "#f1eafe",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517881010-uk3",
+          "type": "service",
+          "sourceServiceId": "srv-8",
+          "name": "Mix do 6 min utworu - 20-50 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 1000,
+          "color": "#f1eafe",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517881348-ymy",
+          "type": "service",
+          "sourceServiceId": "srv-8",
+          "name": "Mix do 6 min utworu - 20-50 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 1000,
+          "color": "#f1eafe",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517881530-n86",
+          "type": "service",
+          "sourceServiceId": "srv-8",
+          "name": "Mix do 6 min utworu - 20-50 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 1000,
+          "color": "#f1eafe",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517881703-v7t",
+          "type": "service",
+          "sourceServiceId": "srv-8",
+          "name": "Mix do 6 min utworu - 20-50 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 1000,
+          "color": "#f1eafe",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517881892-lzh",
+          "type": "service",
+          "sourceServiceId": "srv-8",
+          "name": "Mix do 6 min utworu - 20-50 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 1000,
+          "color": "#f1eafe",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517889053-oxp",
+          "type": "service",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 250,
+          "color": "#fef7dc",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517889561-kpn",
+          "type": "service",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 250,
+          "color": "#fef7dc",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517889723-gmd",
+          "type": "service",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 250,
+          "color": "#fef7dc",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517889875-ups",
+          "type": "service",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 250,
+          "color": "#fef7dc",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517890021-5mf",
+          "type": "service",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 250,
+          "color": "#fef7dc",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795517890157-zmv",
+          "type": "service",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 250,
+          "color": "#fef7dc",
+          "discount": "",
+          "note": ""
+        }
+      ],
+      "createdAt": "2026-11-24T10:56:40.373Z",
+      "updatedAt": "2026-11-24T10:59:09.514Z",
+      "finalizedAt": "2026-11-24T10:59:09.514Z",
+      "summary": {
+        "gross": 11040,
+        "discount": 0,
+        "total": 11040
+      }
+    },
     {
       "id": "est-1795517800373-mf5c",
       "status": "final",
