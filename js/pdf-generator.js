@@ -4,7 +4,6 @@ const PDFMAKE_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfma
 const VFS_FONTS_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.min.js';
 
 let pdfMakeLoaderPromise = null;
-let cachedLogoDataUrl = undefined;
 
 function loadScript(src) {
   return new Promise((resolve, reject) => {
@@ -58,61 +57,6 @@ async function ensurePdfMake() {
   return pdfMakeLoaderPromise;
 }
 
-function isValidPngDataUrl(val) {
-  if (typeof val !== 'string') return false;
-  const prefix = 'data:image/png;base64,';
-  if (!val.startsWith(prefix)) return false;
-  const b64 = val.slice(prefix.length).trim();
-  // Minimalny sensowny obrazek PNG w base64 ma sporo znaków i brak białych znaków
-  return b64.length > 120 && /^[A-Za-z0-9+/=]+$/.test(b64);
-}
-
-async function getLogoDataUrl() {
-  if (cachedLogoDataUrl !== undefined) {
-    return cachedLogoDataUrl;
-  }
-
-  try {
-    const img = await new Promise((resolve, reject) => {
-      const image = new Image();
-      image.crossOrigin = 'anonymous';
-      image.onload = () => resolve(image);
-      image.onerror = () => reject(new Error('Nie udało się wczytać assets/logo.png'));
-      image.src = 'assets/logo.png';
-    });
-
-    const width = img.naturalWidth || img.width;
-    const height = img.naturalHeight || img.height;
-    if (!width || !height) {
-      cachedLogoDataUrl = null;
-      return null;
-    }
-
-    const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) {
-      cachedLogoDataUrl = null;
-      return null;
-    }
-
-    ctx.drawImage(img, 0, 0, width, height);
-    const pngDataUrl = canvas.toDataURL('image/png');
-
-    if (isValidPngDataUrl(pngDataUrl)) {
-      cachedLogoDataUrl = pngDataUrl;
-      return pngDataUrl;
-    }
-
-    cachedLogoDataUrl = null;
-    return null;
-  } catch {
-    cachedLogoDataUrl = null;
-    return null;
-  }
-}
-
 function formatDatePL(isoStr) {
   if (!isoStr) return '—';
   const parts = String(isoStr).split('-');
@@ -131,14 +75,14 @@ function sanitizeFileName(name) {
     .replace(/\s+/g, '_');
 }
 
-function buildDocDefinition(estimate, logoDataUrl) {
+function buildDocDefinition(estimate) {
   const items = Array.isArray(estimate.items) ? estimate.items : [];
 
   const tableBody = [
     [
       { text: 'Lp.', style: 'th', alignment: 'center' },
       { text: 'Usługa', style: 'th' },
-      { text: 'Jednostka', style: 'th', alignment: 'center' },
+      { text: 'Jedn.', style: 'th', alignment: 'center' },
       { text: 'Ilość', style: 'th', alignment: 'right' },
       { text: 'Cena', style: 'th', alignment: 'right' },
       { text: 'Rabat', style: 'th', alignment: 'right' },
@@ -156,13 +100,13 @@ function buildDocDefinition(estimate, logoDataUrl) {
       tableBody.push([
         {
           colSpan: 7,
-          text: item.label ? `— ${item.label} —` : '',
+          text: item.label ? `— ${item.label} —` : '—',
           alignment: 'center',
-          fontSize: 8.5,
+          fontSize: 7.5,
           bold: true,
-          color: '#333333',
+          color: '#374151',
           fillColor: '#f3f4f6',
-          margin: [0, 3, 0, 3]
+          margin: [0, 1.5, 0, 1.5]
         },
         {}, {}, {}, {}, {}, {}
       ]);
@@ -174,24 +118,27 @@ function buildDocDefinition(estimate, logoDataUrl) {
       const subValue = runningSubtotal;
       runningSubtotal = 0;
 
+      // ~20% szarego tła (#cccccc) z czarnym tekstem
       tableBody.push([
         {
           colSpan: 6,
           text: subLabel,
           bold: true,
+          fontSize: 8,
           color: '#000000',
           fillColor: '#cccccc',
           alignment: 'right',
-          margin: [0, 3, 6, 3]
+          margin: [0, 1.5, 4, 1.5]
         },
         {}, {}, {}, {}, {},
         {
           text: formatPLN(subValue),
           bold: true,
+          fontSize: 8,
           color: '#000000',
           fillColor: '#cccccc',
           alignment: 'right',
-          margin: [0, 3, 0, 3]
+          margin: [0, 1.5, 0, 1.5]
         }
       ]);
       return;
@@ -213,55 +160,64 @@ function buildDocDefinition(estimate, logoDataUrl) {
       {
         text: `${lp}.`,
         alignment: 'center',
-        border: hasNote ? [true, true, true, false] : [true, true, true, true]
+        fontSize: 8,
+        margin: [0, 1.5, 0, 1.5]
       },
       {
         text: item.name || 'Pozycja bez nazwy',
         bold: true,
-        border: hasNote ? [true, true, true, false] : [true, true, true, true]
+        fontSize: 8,
+        margin: [0, 1.5, 0, 1.5]
       },
       {
         text: item.unit || 'usł.',
         alignment: 'center',
-        border: hasNote ? [true, true, true, false] : [true, true, true, true]
+        fontSize: 8,
+        margin: [0, 1.5, 0, 1.5]
       },
       {
         text: String(qty),
         alignment: 'right',
-        border: hasNote ? [true, true, true, false] : [true, true, true, true]
+        fontSize: 8,
+        margin: [0, 1.5, 0, 1.5]
       },
       {
         text: formatPLN(unitPrice),
         alignment: 'right',
-        border: hasNote ? [true, true, true, false] : [true, true, true, true]
+        fontSize: 8,
+        margin: [0, 1.5, 0, 1.5]
       },
       {
         text: discountLabel || '—',
         alignment: 'right',
-        border: hasNote ? [true, true, true, false] : [true, true, true, true]
+        fontSize: 8,
+        margin: [0, 1.5, 0, 1.5]
       },
       {
         text: formatPLN(lineNet),
         bold: true,
         alignment: 'right',
-        border: hasNote ? [true, true, true, false] : [true, true, true, true]
+        fontSize: 8,
+        margin: [0, 1.5, 0, 1.5]
       }
     ]);
 
+    // Pełne obramowanie + delikatne tło pod notatką, bez rozrywania siatki tabeli
     if (hasNote) {
       tableBody.push([
         {
           text: '',
-          border: [true, false, true, true]
+          fillColor: '#f8fafc',
+          margin: [0, 1, 0, 1]
         },
         {
           colSpan: 6,
           text: `↳ ${item.note.trim()}`,
-          fontSize: 8.5,
+          fontSize: 7.5,
           italics: true,
-          color: '#222222',
-          margin: [14, 0, 0, 2],
-          border: [true, false, true, true]
+          color: '#374151',
+          fillColor: '#f8fafc',
+          margin: [8, 1, 2, 1]
         },
         {}, {}, {}, {}, {}
       ]);
@@ -274,113 +230,107 @@ function buildDocDefinition(estimate, logoDataUrl) {
   );
   const finalTotal = Math.max(0, grossBeforeGlobal - globalDiscountAmt);
 
-  const rightHeaderStack = [];
-  if (isValidPngDataUrl(logoDataUrl)) {
-    rightHeaderStack.push({
-      image: logoDataUrl,
-      fit: [145, 58],
-      alignment: 'right',
-      margin: [0, 0, 0, 8]
-    });
-  } else {
-    rightHeaderStack.push({
-      text: 'JZ PRODUCTION',
-      fontSize: 15,
-      bold: true,
-      alignment: 'right',
-      margin: [0, 0, 0, 8]
-    });
-  }
-
-  rightHeaderStack.push({
-    table: {
-      widths: [68, '*'],
-      body: [
-        [
-          { text: 'Dla:', bold: true, fillColor: '#f3f4f6' },
-          { text: estimate.client || '—', bold: true }
-        ],
-        [
-          { text: 'Ważna od:', bold: true, fillColor: '#f3f4f6' },
-          { text: formatDatePL(estimate.validFrom) }
-        ],
-        [
-          { text: 'Ważna do:', bold: true, fillColor: '#f3f4f6' },
-          { text: formatDatePL(estimate.validTo) }
-        ]
-      ]
-    },
-    layout: {
-      hLineWidth: () => 0.6,
-      vLineWidth: () => 0.6,
-      hLineColor: () => '#9ca3af',
-      vLineColor: () => '#9ca3af',
-      paddingLeft: () => 6,
-      paddingRight: () => 6,
-      paddingTop: () => 3,
-      paddingBottom: () => 3
-    }
-  });
-
   const offerTitle = estimate.title ? `OFERTA: ${estimate.title}` : 'OFERTA / KOSZTORYS';
 
   return {
     pageSize: 'A4',
-    pageMargins: [34, 34, 34, 34],
+    pageMargins: [24, 24, 24, 24],
     defaultStyle: {
       font: 'Roboto',
-      fontSize: 9.5,
+      fontSize: 8.5,
       color: '#111827',
-      lineHeight: 1.25
+      lineHeight: 1.18
     },
     content: [
+      // NAGŁÓWEK DOKUMENTU
       {
         columns: [
           {
             width: '*',
             stack: [
-              { text: 'Jacek Zamecki', fontSize: 18, bold: true, margin: [0, 0, 0, 2] },
+              { text: 'Jacek Zamecki', fontSize: 16, bold: true, margin: [0, 0, 0, 1] },
               {
                 text: 'Kompozycja, Aranżacja, Produkcja muzyczna, Edukacja muzyczna',
-                fontSize: 9.5,
+                fontSize: 8.5,
                 color: '#374151',
-                margin: [0, 0, 0, 14]
+                margin: [0, 0, 0, 10]
               },
               {
                 text: offerTitle,
-                fontSize: 13,
+                fontSize: 11.5,
                 bold: true,
-                margin: [0, 4, 0, 0]
+                margin: [0, 2, 0, 0]
               }
             ]
           },
           {
-            width: 220,
-            stack: rightHeaderStack
+            width: 210,
+            stack: [
+              {
+                text: 'JZ PRODUCTION',
+                fontSize: 13,
+                bold: true,
+                alignment: 'right',
+                margin: [0, 0, 0, 6]
+              },
+              {
+                table: {
+                  widths: [64, '*'],
+                  body: [
+                    [
+                      { text: 'Dla:', bold: true, fontSize: 8, fillColor: '#f3f4f6' },
+                      { text: estimate.client || '—', bold: true, fontSize: 8 }
+                    ],
+                    [
+                      { text: 'Ważna od:', bold: true, fontSize: 8, fillColor: '#f3f4f6' },
+                      { text: formatDatePL(estimate.validFrom), fontSize: 8 }
+                    ],
+                    [
+                      { text: 'Ważna do:', bold: true, fontSize: 8, fillColor: '#f3f4f6' },
+                      { text: formatDatePL(estimate.validTo), fontSize: 8 }
+                    ]
+                  ]
+                },
+                layout: {
+                  hLineWidth: () => 0.5,
+                  vLineWidth: () => 0.5,
+                  hLineColor: () => '#9ca3af',
+                  vLineColor: () => '#9ca3af',
+                  paddingLeft: () => 5,
+                  paddingRight: () => 5,
+                  paddingTop: () => 2,
+                  paddingBottom: () => 2
+                }
+              }
+            ]
           }
         ],
-        columnGap: 16,
-        margin: [0, 0, 0, 14]
+        columnGap: 14,
+        margin: [0, 0, 0, 10]
       },
+
+      // GŁÓWNA TABELA POZYCJI (kompaktowa, więcej miejsca na "Usługa")
       {
         table: {
           headerRows: 1,
           dontBreakRows: true,
-          widths: [24, '*', 46, 34, 64, 52, 72],
+          widths: [20, '*', 34, 28, 58, 48, 66],
           body: tableBody
         },
         layout: {
-          hLineWidth: () => 0.6,
-          vLineWidth: () => 0.6,
+          hLineWidth: () => 0.5,
+          vLineWidth: () => 0.5,
           hLineColor: () => '#9ca3af',
           vLineColor: () => '#9ca3af',
-          paddingLeft: () => 5,
-          paddingRight: () => 5,
-          paddingTop: () => 4,
-          paddingBottom: () => 4
+          paddingLeft: () => 4,
+          paddingRight: () => 4,
+          paddingTop: () => 2,
+          paddingBottom: () => 2
         },
-        margin: [0, 0, 0, 14]
+        margin: [0, 0, 0, 10]
       },
+
+      // DOLNY BLOK: TERMIN + PODSUMOWANIE 2x2 + KLAUZULE + DANE FIRMY + PODPIS
       {
         unbreakable: true,
         stack: [
@@ -389,68 +339,70 @@ function buildDocDefinition(estimate, logoDataUrl) {
               {
                 width: '*',
                 stack: [
-                  { text: 'Przewidywany termin realizacji:', bold: true, fontSize: 9.5 },
-                  { text: '(wypełnia zleceniodawca)', fontSize: 8, color: '#4b5563', margin: [0, 1, 0, 10] },
-                  { text: '........................................................................', color: '#6b7280' }
+                  { text: 'Przewidywany termin realizacji:', bold: true, fontSize: 8.5 },
+                  { text: '(wypełnia zleceniodawca)', fontSize: 7.5, color: '#4b5563', margin: [0, 1, 0, 8] },
+                  { text: '....................................................................', fontSize: 8, color: '#6b7280' }
                 ]
               },
               {
-                width: 235,
+                width: 225,
                 table: {
-                  widths: ['*', 105],
+                  widths: ['*', 98],
                   body: [
                     [
-                      { text: 'SUMA BRUTTO', bold: true, fillColor: '#f3f4f6' },
-                      { text: formatPLN(grossBeforeGlobal), bold: true, alignment: 'right' }
+                      { text: 'SUMA BRUTTO', bold: true, fontSize: 8, fillColor: '#f3f4f6' },
+                      { text: formatPLN(grossBeforeGlobal), bold: true, fontSize: 8, alignment: 'right' }
                     ],
                     [
                       {
                         text: globalDiscountLabel ? `RABAT (${globalDiscountLabel})` : 'RABAT',
                         bold: true,
+                        fontSize: 8,
                         fillColor: '#f3f4f6'
                       },
                       {
                         text: globalDiscountAmt > 0 ? `-${formatPLN(globalDiscountAmt)}` : '—',
+                        fontSize: 8,
                         alignment: 'right'
                       }
                     ],
                     [
-                      { text: 'SUMA KOŃCOWA', bold: true, fontSize: 10.5, fillColor: '#e5e7eb' },
-                      { text: formatPLN(finalTotal), bold: true, fontSize: 12, alignment: 'right', fillColor: '#e5e7eb' }
+                      { text: 'SUMA KOŃCOWA', bold: true, fontSize: 9.5, fillColor: '#e5e7eb' },
+                      { text: formatPLN(finalTotal), bold: true, fontSize: 10.5, alignment: 'right', fillColor: '#e5e7eb' }
                     ]
                   ]
                 },
                 layout: {
-                  hLineWidth: () => 0.7,
-                  vLineWidth: () => 0.7,
+                  hLineWidth: () => 0.6,
+                  vLineWidth: () => 0.6,
                   hLineColor: () => '#6b7280',
                   vLineColor: () => '#6b7280',
-                  paddingLeft: () => 7,
-                  paddingRight: () => 7,
-                  paddingTop: () => 4,
-                  paddingBottom: () => 4
+                  paddingLeft: () => 6,
+                  paddingRight: () => 6,
+                  paddingTop: () => 2.5,
+                  paddingBottom: () => 2.5
                 }
               }
             ],
-            columnGap: 16,
-            margin: [0, 0, 0, 14]
+            columnGap: 14,
+            margin: [0, 0, 0, 10]
           },
           {
             text: 'Powyższa wycena nie jest ofertą handlową. Koszt projektu może się różnić w zależności od zmiany parametrów projektu.',
-            fontSize: 8.5,
+            fontSize: 8,
             italics: true,
             color: '#374151',
-            margin: [0, 0, 0, 12]
+            margin: [0, 0, 0, 9]
           },
           {
             columns: [
               {
-                width: 195,
+                width: 185,
                 stack: [
-                  { text: 'Jacek Zamecki JZ Production', bold: true, fontSize: 9 },
-                  { text: 'ul. Katowicka 48/1 52-022 Wrocław', fontSize: 8.5 },
-                  { text: 'NIP: 8971667886', fontSize: 8.5 },
-                  { text: 'REGON: 388058361', fontSize: 8.5 }
+                  { text: 'Jacek Zamecki JZ Production', bold: true, fontSize: 8.5 },
+                  { text: 'ul. Katowicka 48/1 52-022 Wrocław', fontSize: 8 },
+                  { text: 'NIP: 8971667886', fontSize: 8 },
+                  { text: 'REGON: 388058361', fontSize: 8 }
                 ]
               },
               {
@@ -458,26 +410,27 @@ function buildDocDefinition(estimate, logoDataUrl) {
                 stack: [
                   {
                     text: 'Oświadczam, że zaznajomiłem/łam się z cennikiem oraz warunkami współpracy zamieszczonymi na stronie internetowej: www.jzproduction.pl. Przyjmuję warunki powyższej oferty oraz zlecam wykonanie prac.',
-                    fontSize: 8.5,
+                    fontSize: 8,
                     color: '#1f2937',
-                    margin: [0, 0, 0, 22]
+                    margin: [0, 0, 0, 18]
                   },
                   {
-                    text: '....................................................................',
+                    text: '................................................................',
+                    fontSize: 8,
                     alignment: 'right',
                     color: '#6b7280'
                   },
                   {
                     text: 'podpis',
                     alignment: 'right',
-                    fontSize: 8,
+                    fontSize: 7.5,
                     color: '#4b5563',
-                    margin: [0, 2, 46, 0]
+                    margin: [0, 2, 42, 0]
                   }
                 ]
               }
             ],
-            columnGap: 18
+            columnGap: 16
           }
         ]
       }
@@ -485,7 +438,7 @@ function buildDocDefinition(estimate, logoDataUrl) {
     styles: {
       th: {
         bold: true,
-        fontSize: 8.5,
+        fontSize: 8,
         fillColor: '#e5e7eb',
         color: '#111827'
       }
@@ -495,34 +448,20 @@ function buildDocDefinition(estimate, logoDataUrl) {
 
 export async function generateEstimatePdf(estimate) {
   const pdfMake = await ensurePdfMake();
-  const logoDataUrl = await getLogoDataUrl();
 
   const titlePart = sanitizeFileName(estimate.title || 'Kosztorys');
   const clientPart = sanitizeFileName(estimate.client || '');
   const fileName = clientPart ? `Kosztorys_${titlePart}_${clientPart}.pdf` : `Kosztorys_${titlePart}.pdf`;
 
-  const tryDownload = (withLogo) => {
-    const def = buildDocDefinition(estimate, withLogo ? logoDataUrl : null);
-    const doc = pdfMake.createPdf(def);
-    return new Promise((resolve, reject) => {
-      try {
-        doc.download(fileName, () => resolve());
-        setTimeout(resolve, 600);
-      } catch (err) {
-        reject(err);
-      }
-    });
-  };
+  const def = buildDocDefinition(estimate);
+  const doc = pdfMake.createPdf(def);
 
-  try {
-    await tryDownload(true);
-  } catch (err) {
-    const msg = String(err?.message || err || '');
-    if (msg.includes('Unknown image format') || msg.includes('Invalid image')) {
-      cachedLogoDataUrl = null;
-      await tryDownload(false);
-      return;
+  await new Promise((resolve, reject) => {
+    try {
+      doc.download(fileName, () => resolve());
+      setTimeout(resolve, 600);
+    } catch (err) {
+      reject(err);
     }
-    throw err;
-  }
+  });
 }
