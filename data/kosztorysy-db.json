@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:22:33.923Z"
+    "updatedAt": "2026-11-24T11:23:26.312Z"
   },
   "priceList": [
     {
@@ -43,28 +43,35 @@
       "id": "srv-6",
       "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, LEAD SHEET",
       "unit": "min",
-      "price": 200,
+      "price": 140,
       "color": "#e6f7ed"
     },
     {
       "id": "srv-7",
-      "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, ",
+      "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, >5 instrumentów",
       "unit": "min",
-      "price": 550,
+      "price": 240,
       "color": "#e6f7ed"
     },
     {
       "id": "srv-8",
-      "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, ",
+      "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, 6-20 instrumentów",
       "unit": "min",
-      "price": 1000,
+      "price": 320,
       "color": "#e6f7ed"
     },
     {
       "id": "srv-9",
-      "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, ",
+      "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, 20-60 instrumentów",
       "unit": "min",
-      "price": 200,
+      "price": 390,
+      "color": "#e6f7ed"
+    },
+    {
+      "id": "srv-1795519365613",
+      "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, <60 instrumentów",
+      "unit": "min",
+      "price": 560,
       "color": "#e6f7ed"
     }
   ],
