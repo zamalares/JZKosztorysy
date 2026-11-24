@@ -15,7 +15,7 @@ function loadScript(src) {
         return;
       }
       if (existing.dataset.error === 'true') {
-        reject(new Error(`Zablokowano lub nie udało się wczytać skryptu: ${src}`));
+        reject(new Error(`Nie udało się wczytać skryptu: ${src}`));
         return;
       }
       existing.addEventListener('load', () => resolve(), { once: true });
@@ -32,7 +32,7 @@ function loadScript(src) {
     };
     script.onerror = () => {
       script.dataset.error = 'true';
-      reject(new Error(`Nie udało się załadować: ${src} (sprawdź połączenie lub adblockera)`));
+      reject(new Error(`Nie udało się załadować: ${src}`));
     };
     document.head.appendChild(script);
   });
@@ -47,11 +47,10 @@ async function ensurePdfMake() {
       await loadScript(PDFMAKE_CDN);
       await loadScript(VFS_FONTS_CDN);
       if (!window.pdfMake || typeof window.pdfMake.createPdf !== 'function') {
-        throw new Error('Biblioteka pdfMake nie została poprawnie zainicjalizowana.');
+        throw new Error('Biblioteka pdfMake nie została zainicjalizowana.');
       }
       return window.pdfMake;
     })().catch((err) => {
-      // Pozwól spróbować ponownie przy kolejnym kliknięciu zamiast zapamiętywać błąd na stałe
       pdfMakeLoaderPromise = null;
       throw err;
     });
@@ -59,30 +58,50 @@ async function ensurePdfMake() {
   return pdfMakeLoaderPromise;
 }
 
+/**
+ * Konwertuje logo (PNG, JPG, WebP itp.) przez canvas do czystego data:image/png;base64,...
+ * Dzięki temu pdfmake nigdy nie zgłosi "Unknown image format".
+ */
 async function getLogoDataUrl() {
   if (cachedLogoDataUrl !== undefined) {
     return cachedLogoDataUrl;
   }
+
   try {
-    const res = await fetch('assets/logo.png', { cache: 'no-cache' });
-    if (!res.ok) {
-      cachedLogoDataUrl = null;
-      return null;
-    }
-    const contentType = res.headers.get('content-type') || '';
-    if (!contentType.startsWith('image/')) {
-      cachedLogoDataUrl = null;
-      return null;
-    }
-    const blob = await res.blob();
-    const dataUrl = await new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result);
-      reader.onerror = reject;
-      reader.readAsDataURL(blob);
+    const img = await new Promise((resolve, reject) => {
+      const image = new Image();
+      image.crossOrigin = 'anonymous';
+      image.onload = () => resolve(image);
+      image.onerror = () => reject(new Error('Nie udało się wczytać assets/logo.png'));
+      image.src = `assets/logo.png?v=${Date.now()}`;
     });
-    cachedLogoDataUrl = typeof dataUrl === 'string' && dataUrl.startsWith('data:image/') ? dataUrl : null;
-    return cachedLogoDataUrl;
+
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+    if (!width || !height) {
+      cachedLogoDataUrl = null;
+      return null;
+    }
+
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      cachedLogoDataUrl = null;
+      return null;
+    }
+
+    ctx.drawImage(img, 0, 0, width, height);
+    const pngDataUrl = canvas.toDataURL('image/png');
+
+    if (typeof pngDataUrl === 'string' && pngDataUrl.startsWith('data:image/png;base64,')) {
+      cachedLogoDataUrl = pngDataUrl;
+      return pngDataUrl;
+    }
+
+    cachedLogoDataUrl = null;
+    return null;
   } catch {
     cachedLogoDataUrl = null;
     return null;
@@ -479,7 +498,6 @@ export async function generateEstimatePdf(estimate) {
   await new Promise((resolve, reject) => {
     try {
       doc.download(fileName, () => resolve());
-      // Awaryjnie domknij promise po krótkim czasie, gdyby callback nie odpalił w danej przeglądarce
       setTimeout(resolve, 600);
     } catch (err) {
       reject(err);
