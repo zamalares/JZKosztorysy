@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:23:26.312Z"
+    "updatedAt": "2026-11-24T11:30:26.556Z"
   },
   "priceList": [
     {
@@ -73,6 +73,34 @@
       "unit": "min",
       "price": 560,
       "color": "#e6f7ed"
+    },
+    {
+      "id": "srv-1795519815624",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795519816081",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795519818476",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795519819540",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
     }
   ],
   "estimates": [],
