@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T10:59:09.515Z"
+    "updatedAt": "2026-11-24T10:59:48.926Z"
   },
   "priceList": [
     {
@@ -69,6 +69,38 @@
     }
   ],
   "estimates": [
+    {
+      "id": "est-1795517976874-h9c9",
+      "status": "final",
+      "archived": false,
+      "title": "asf",
+      "client": "asdf",
+      "validFrom": "2026-11-24",
+      "validTo": "2026-12-08",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795517978188-w84",
+          "type": "service",
+          "sourceServiceId": "srv-4",
+          "name": "Wynajem sesyjnego muzyka",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 250,
+          "color": "#fef7dc",
+          "discount": "",
+          "note": "hola hola"
+        }
+      ],
+      "createdAt": "2026-11-24T10:59:36.875Z",
+      "updatedAt": "2026-11-24T10:59:48.925Z",
+      "finalizedAt": "2026-11-24T10:59:48.925Z",
+      "summary": {
+        "gross": 250,
+        "discount": 0,
+        "total": 250
+      }
+    },
     {
       "id": "est-1795517949514-zo28",
       "status": "final",
