@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T10:47:05.325Z"
+    "updatedAt": "2026-11-24T10:49:30.733Z"
   },
   "priceList": [
     {
@@ -69,6 +69,95 @@
     }
   ],
   "estimates": [
+    {
+      "id": "est-1795517370733-0mig",
+      "status": "final",
+      "archived": false,
+      "title": "kosztorys",
+      "client": "Dominik",
+      "validFrom": "2026-11-24",
+      "validTo": "2026-12-08",
+      "globalDiscount": "-13",
+      "items": [
+        {
+          "id": "line-1795517210535-qk2",
+          "type": "service",
+          "sourceServiceId": "srv-3",
+          "name": "Zrealizowanie pojedynczej partii - brzmienia vsti - do 5 min",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 300,
+          "color": "#e6f7ed",
+          "discount": "-7",
+          "note": "dlopa"
+        },
+        {
+          "id": "line-1795517216514-dy3",
+          "type": "service",
+          "sourceServiceId": "srv-7",
+          "name": "Mix do 6 min utworu - Do 20 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 550,
+          "color": "#f1eafe",
+          "discount": "30%",
+          "note": "hfda"
+        },
+        {
+          "id": "line-1795517281793-pk9",
+          "type": "service",
+          "sourceServiceId": "srv-6",
+          "name": "Edycja głęboka śladów - intonacja, timing",
+          "unit": "h.",
+          "qty": 1,
+          "price": 200,
+          "color": "#ffece4",
+          "discount": "-60",
+          "note": "gffdasa"
+        },
+        {
+          "id": "line-1795517293555-p3o",
+          "type": "custom",
+          "name": "fumuki",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 20,
+          "color": "#ffffff",
+          "discount": "",
+          "note": "sda"
+        },
+        {
+          "id": "sub-1795517339084-v73",
+          "type": "subtotal",
+          "label": "Suma częściowa"
+        },
+        {
+          "id": "sep-1795517341408-4o1",
+          "type": "separator",
+          "label": "Drugi utwór"
+        },
+        {
+          "id": "line-1795517353024-ahj",
+          "type": "service",
+          "sourceServiceId": "srv-8",
+          "name": "Mix do 6 min utworu - 20-50 ścieżek",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 1000,
+          "color": "#f1eafe",
+          "discount": "",
+          "note": ""
+        }
+      ],
+      "createdAt": "2026-11-24T10:46:28.303Z",
+      "updatedAt": "2026-11-24T10:49:30.733Z",
+      "finalizedAt": "2026-11-24T10:49:30.733Z",
+      "summary": {
+        "gross": 1838,
+        "discount": 13,
+        "total": 1825
+      }
+    },
     {
       "id": "est-1795517188303-pu90",
       "status": "final",
