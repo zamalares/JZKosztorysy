@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:17:01.913Z"
+    "updatedAt": "2026-11-24T12:17:26.561Z"
   },
   "priceList": [
     {
@@ -276,6 +276,48 @@
       "unit": "Utwór",
       "price": 2500,
       "color": "#e6f7ed"
+    },
+    {
+      "id": "srv-1795522630152",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522632150",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522634292",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522636016",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522637806",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522639544",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
     }
   ],
   "estimates": [],
