@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:17:51.779Z"
+    "updatedAt": "2026-11-24T12:18:06.293Z"
   },
   "priceList": [
     {
@@ -279,14 +279,14 @@
     },
     {
       "id": "srv-1795522630152",
-      "name": "Render i wysłanie stemów/ścieżek po dokonaniu mixu",
+      "name": "Render i wysłanie stemów/ścieżek po dokonaniu mixu,",
       "unit": "usł.",
       "price": 0,
       "color": "#ffffff"
     },
     {
       "id": "srv-1795522632150",
-      "name": "",
+      "name": "Render i wysłanie stemów/ścieżek po dokonaniu mixu,",
       "unit": "usł.",
       "price": 0,
       "color": "#ffffff"
