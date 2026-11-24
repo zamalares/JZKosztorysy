@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:52:36.610Z"
+    "updatedAt": "2026-11-24T11:53:33.653Z"
   },
   "priceList": [
     {
@@ -104,31 +104,31 @@
     },
     {
       "id": "srv-1795520369323",
-      "name": " Partytura do wcześniej skomponowanego/aranżowanego w studio utworu, ",
+      "name": "Partytura do wcześniej skomponowanego/aranżowanego w studio utworu, >5 instrumentów",
       "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "price": 170,
+      "color": "#f1eafe"
     },
     {
       "id": "srv-1795521128638",
-      "name": "",
+      "name": "Partytura do wcześniej skomponowanego/aranżowanego w studio utworu, 6-12 instrumentów",
       "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "price": 230,
+      "color": "#f1eafe"
     },
     {
       "id": "srv-1795521129758",
-      "name": "",
+      "name": "Partytura do wcześniej skomponowanego/aranżowanego w studio utworu, 13-20 instrumentów",
       "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "price": 340,
+      "color": "#f1eafe"
     },
     {
       "id": "srv-1795521130708",
-      "name": "",
+      "name": "Partytura do wcześniej skomponowanego/aranżowanego w studio utworu, <20 instrumentów",
       "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "price": 440,
+      "color": "#f1eafe"
     },
     {
       "id": "srv-1795521131666",
