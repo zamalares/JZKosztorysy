@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:01:47.820Z"
+    "updatedAt": "2026-11-24T11:07:00.763Z"
   },
   "priceList": [
     {
@@ -69,6 +69,401 @@
     }
   ],
   "estimates": [
+    {
+      "id": "est-1795518359280-sqyt",
+      "status": "final",
+      "archived": false,
+      "title": "koleś",
+      "client": "klient",
+      "validFrom": "2026-11-24",
+      "validTo": "2026-12-08",
+      "globalDiscount": "20%",
+      "items": [
+        {
+          "id": "line-1795518375884-sdn",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": "paiousbdfg po uiahsdf"
+        },
+        {
+          "id": "line-1795518376548-kwx",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": "fda gadf "
+        },
+        {
+          "id": "line-1795518376702-cgs",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": "adsfg adsfg "
+        },
+        {
+          "id": "line-1795518376850-01b",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": "ads fadsg "
+        },
+        {
+          "id": "line-1795518377002-qp4",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": "ag sdfga "
+        },
+        {
+          "id": "line-1795518377140-g41",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": "adf gads "
+        },
+        {
+          "id": "line-1795518377284-t5n",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": "afg ad "
+        },
+        {
+          "id": "line-1795518377406-s0t",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518377538-m4c",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518377668-zqo",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518377792-de0",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518377926-58n",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518378043-5jk",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518378174-4zl",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518378412-qeh",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518378562-656",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518378744-o35",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518378904-wjo",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518379044-543",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518379178-psf",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518379306-ce8",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518379452-ghk",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518379548-nad",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518379646-aoq",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518379750-h3q",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518379874-yui",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518379980-r99",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518380093-e9k",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "sub-1795518398931-03w",
+          "type": "subtotal",
+          "label": "Suma częściowa"
+        },
+        {
+          "id": "sep-1795518399655-psa",
+          "type": "separator",
+          "label": ""
+        },
+        {
+          "id": "line-1795518401073-auq",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518401259-ij5",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "Nagranie studyjne",
+          "unit": "h.",
+          "qty": 1,
+          "price": 180,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "sub-1795518405994-6e0",
+          "type": "subtotal",
+          "label": "Suma częściowa"
+        }
+      ],
+      "createdAt": "2026-11-24T11:05:59.280Z",
+      "updatedAt": "2026-11-24T11:07:00.761Z",
+      "finalizedAt": "2026-11-24T11:07:00.762Z",
+      "summary": {
+        "gross": 5400,
+        "discount": 1080,
+        "total": 4320
+      }
+    },
     {
       "id": "est-1795518065747-3870",
       "status": "final",
