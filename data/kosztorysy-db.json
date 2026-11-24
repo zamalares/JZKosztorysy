@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:13:33.705Z"
+    "updatedAt": "2026-11-24T12:14:19.217Z"
   },
   "priceList": [
     {
@@ -212,25 +212,25 @@
       "name": "Opieka producenta przy nagraniach, produkcji w zewnętrznym studio nagrań",
       "unit": "h.",
       "price": 150,
-      "color": "#ffffff"
+      "color": "#f1eafe"
     },
     {
       "id": "srv-1795522374773",
-      "name": "",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "Edycja podstawowa – Wybór, cięcie śladów",
+      "unit": "h.",
+      "price": 120,
+      "color": "#ffece4"
     },
     {
       "id": "srv-1795522376889",
-      "name": "",
-      "unit": "usł.",
-      "price": 0,
-      "color": "#ffffff"
+      "name": "Edycja głęboka śladów – intonacja, timing",
+      "unit": "usłh.",
+      "price": 200,
+      "color": "#ffece4"
     },
     {
       "id": "srv-1795522378327",
-      "name": "",
+      "name": "Analogowe taśmowanie śladów lub miksu",
       "unit": "usł.",
       "price": 0,
       "color": "#ffffff"
