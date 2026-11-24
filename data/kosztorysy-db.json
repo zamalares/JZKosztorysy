@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:12:38.336Z"
+    "updatedAt": "2026-11-24T12:13:13.048Z"
   },
   "priceList": [
     {
@@ -202,6 +202,69 @@
     },
     {
       "id": "srv-1795521143024",
+      "name": "Sesja songwriterska/produkcyjna",
+      "unit": "h.",
+      "price": 150,
+      "color": "#fef7dc"
+    },
+    {
+      "id": "srv-1795522373032",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522374773",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522376889",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522378327",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522379679",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522380945",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522382299",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522383849",
+      "name": "",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "srv-1795522386029",
       "name": "",
       "unit": "usł.",
       "price": 0,
