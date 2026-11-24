@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:21:19.040Z"
+    "updatedAt": "2026-11-24T12:21:49.662Z"
   },
   "priceList": [
     {
@@ -237,7 +237,7 @@
     },
     {
       "id": "srv-1795522379679",
-      "name": "Mix do 6 min utworu, Small, Do 20 ścieżek",
+      "name": "Mix do 6 min utworu, Small, Do 20 ścieżek (max. trzy wersje miksu)",
       "unit": "Utwór",
       "price": 550,
       "color": "#e8f1ff"
