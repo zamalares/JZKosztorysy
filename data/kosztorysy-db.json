@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:20:48.712Z"
+    "updatedAt": "2026-11-24T12:21:03.448Z"
   },
   "priceList": [
     {
@@ -278,6 +278,13 @@
       "color": "#e6f7ed"
     },
     {
+      "id": "srv-1795522820864",
+      "name": "Dodatkowa wersja miksu",
+      "unit": "szt.",
+      "price": 150,
+      "color": "#ffece4"
+    },
+    {
       "id": "srv-1795522630152",
       "name": "Render i wysłanie stemów/ścieżek po dokonaniu mixu, Paczka (do 8 stemów)",
       "unit": "Paczka",
@@ -318,13 +325,6 @@
       "unit": "usł.",
       "price": 250,
       "color": "#f1eafe"
-    },
-    {
-      "id": "srv-1795522820864",
-      "name": "Dodatkowa wersja miksu",
-      "unit": "szt.",
-      "price": 150,
-      "color": "#ffffff"
     }
   ],
   "estimates": [],
