@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:19:53.998Z"
+    "updatedAt": "2026-11-24T11:20:09.949Z"
   },
   "priceList": [
     {
@@ -13,7 +13,7 @@
     },
     {
       "id": "srv-2",
-      "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, >5 instrumentów",
+      "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, 6-12 instrumentów",
       "unit": "min.",
       "price": 390,
       "color": "#e8f1ff"
