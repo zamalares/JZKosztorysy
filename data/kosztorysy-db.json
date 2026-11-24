@@ -1,12 +1,12 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:13:47.639Z"
+    "updatedAt": "2026-11-24T11:19:38.546Z"
   },
   "priceList": [
     {
       "id": "srv-1",
-      "name": "MUZYKA ROZRYWKOWA - KOMPOZYCJA; pilot audio; do 5 instrumentów",
+      "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, >5 instrumentów",
       "unit": "min.",
       "price": 240,
       "color": "#ffffff"
