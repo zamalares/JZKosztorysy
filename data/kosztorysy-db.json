@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T10:39:26.686Z"
+    "updatedAt": "2026-11-24T10:40:33.791Z"
   },
   "priceList": [
     {
@@ -325,7 +325,7 @@
     },
     {
       "id": "est-1795443990773-pje3",
-      "status": "draft",
+      "status": "final",
       "archived": false,
       "title": "Ala",
       "client": "lala",
@@ -362,12 +362,13 @@
         }
       ],
       "createdAt": "2026-11-23T14:26:30.774Z",
-      "updatedAt": "2026-11-23T14:27:21.131Z",
+      "updatedAt": "2026-11-24T10:40:33.791Z",
       "summary": {
         "gross": 420,
         "discount": 0,
         "total": 420
-      }
+      },
+      "finalizedAt": "2026-11-24T10:40:33.791Z"
     },
     {
       "id": "est-1795443530374-ooa0",
