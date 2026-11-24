@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-23T14:54:17.623Z"
+    "updatedAt": "2026-11-24T10:36:52.745Z"
   },
   "priceList": [
     {
@@ -319,10 +319,10 @@
     },
     {
       "id": "est-1795443530374-ooa0",
-      "status": "draft",
+      "status": "final",
       "archived": false,
-      "title": "",
-      "client": "",
+      "title": "fdre",
+      "client": "fedr",
       "validFrom": "2026-11-23",
       "validTo": "2026-12-07",
       "globalDiscount": "-23",
@@ -361,12 +361,13 @@
         }
       ],
       "createdAt": "2026-11-23T14:18:50.374Z",
-      "updatedAt": "2026-11-23T14:20:12.999Z",
+      "updatedAt": "2026-11-24T10:36:52.744Z",
       "summary": {
         "gross": 775,
         "discount": 23,
         "total": 752
-      }
+      },
+      "finalizedAt": "2026-11-24T10:36:52.745Z"
     },
     {
       "id": "est-1795441970303-v0wq",
