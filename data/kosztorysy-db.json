@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:21:35.721Z"
+    "updatedAt": "2026-11-24T11:22:05.017Z"
   },
   "priceList": [
     {
@@ -41,10 +41,10 @@
     },
     {
       "id": "srv-6",
-      "name": "Edycja głęboka śladów - intonacja, timing",
+      "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, LEAD SHEET",
       "unit": "h.",
       "price": 200,
-      "color": "#ffece4"
+      "color": "#e6f7ed"
     },
     {
       "id": "srv-7",
