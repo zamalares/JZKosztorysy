@@ -47,7 +47,7 @@ async function ensurePdfMake() {
       await loadScript(PDFMAKE_CDN);
       await loadScript(VFS_FONTS_CDN);
       if (!window.pdfMake || typeof window.pdfMake.createPdf !== 'function') {
-        throw new Error('Biblioteka pdfMake nie została zainicjalizowana.');
+        throw new Error('Biblioteka pdfMake nie została poprawnie zainicjalizowana.');
       }
       return window.pdfMake;
     })().catch((err) => {
@@ -58,10 +58,15 @@ async function ensurePdfMake() {
   return pdfMakeLoaderPromise;
 }
 
-/**
- * Konwertuje logo (PNG, JPG, WebP itp.) przez canvas do czystego data:image/png;base64,...
- * Dzięki temu pdfmake nigdy nie zgłosi "Unknown image format".
- */
+function isValidPngDataUrl(val) {
+  if (typeof val !== 'string') return false;
+  const prefix = 'data:image/png;base64,';
+  if (!val.startsWith(prefix)) return false;
+  const b64 = val.slice(prefix.length).trim();
+  // Minimalny sensowny obrazek PNG w base64 ma sporo znaków i brak białych znaków
+  return b64.length > 120 && /^[A-Za-z0-9+/=]+$/.test(b64);
+}
+
 async function getLogoDataUrl() {
   if (cachedLogoDataUrl !== undefined) {
     return cachedLogoDataUrl;
@@ -73,7 +78,7 @@ async function getLogoDataUrl() {
       image.crossOrigin = 'anonymous';
       image.onload = () => resolve(image);
       image.onerror = () => reject(new Error('Nie udało się wczytać assets/logo.png'));
-      image.src = `assets/logo.png?v=${Date.now()}`;
+      image.src = 'assets/logo.png';
     });
 
     const width = img.naturalWidth || img.width;
@@ -95,7 +100,7 @@ async function getLogoDataUrl() {
     ctx.drawImage(img, 0, 0, width, height);
     const pngDataUrl = canvas.toDataURL('image/png');
 
-    if (typeof pngDataUrl === 'string' && pngDataUrl.startsWith('data:image/png;base64,')) {
+    if (isValidPngDataUrl(pngDataUrl)) {
       cachedLogoDataUrl = pngDataUrl;
       return pngDataUrl;
     }
@@ -126,10 +131,7 @@ function sanitizeFileName(name) {
     .replace(/\s+/g, '_');
 }
 
-export async function generateEstimatePdf(estimate) {
-  const pdfMake = await ensurePdfMake();
-  const logoDataUrl = await getLogoDataUrl();
-
+function buildDocDefinition(estimate, logoDataUrl) {
   const items = Array.isArray(estimate.items) ? estimate.items : [];
 
   const tableBody = [
@@ -273,7 +275,7 @@ export async function generateEstimatePdf(estimate) {
   const finalTotal = Math.max(0, grossBeforeGlobal - globalDiscountAmt);
 
   const rightHeaderStack = [];
-  if (logoDataUrl) {
+  if (isValidPngDataUrl(logoDataUrl)) {
     rightHeaderStack.push({
       image: logoDataUrl,
       fit: [145, 58],
@@ -322,7 +324,7 @@ export async function generateEstimatePdf(estimate) {
 
   const offerTitle = estimate.title ? `OFERTA: ${estimate.title}` : 'OFERTA / KOSZTORYS';
 
-  const docDefinition = {
+  return {
     pageSize: 'A4',
     pageMargins: [34, 34, 34, 34],
     defaultStyle: {
@@ -489,18 +491,38 @@ export async function generateEstimatePdf(estimate) {
       }
     }
   };
+}
+
+export async function generateEstimatePdf(estimate) {
+  const pdfMake = await ensurePdfMake();
+  const logoDataUrl = await getLogoDataUrl();
 
   const titlePart = sanitizeFileName(estimate.title || 'Kosztorys');
   const clientPart = sanitizeFileName(estimate.client || '');
   const fileName = clientPart ? `Kosztorys_${titlePart}_${clientPart}.pdf` : `Kosztorys_${titlePart}.pdf`;
 
-  const doc = pdfMake.createPdf(docDefinition);
-  await new Promise((resolve, reject) => {
-    try {
-      doc.download(fileName, () => resolve());
-      setTimeout(resolve, 600);
-    } catch (err) {
-      reject(err);
+  const tryDownload = (withLogo) => {
+    const def = buildDocDefinition(estimate, withLogo ? logoDataUrl : null);
+    const doc = pdfMake.createPdf(def);
+    return new Promise((resolve, reject) => {
+      try {
+        doc.download(fileName, () => resolve());
+        setTimeout(resolve, 600);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  };
+
+  try {
+    await tryDownload(true);
+  } catch (err) {
+    const msg = String(err?.message || err || '');
+    if (msg.includes('Unknown image format') || msg.includes('Invalid image')) {
+      cachedLogoDataUrl = null;
+      await tryDownload(false);
+      return;
     }
-  });
+    throw err;
+  }
 }
