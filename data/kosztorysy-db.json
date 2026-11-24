@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:20:38.847Z"
+    "updatedAt": "2026-11-24T12:20:48.712Z"
   },
   "priceList": [
     {
@@ -323,7 +323,7 @@
       "id": "srv-1795522820864",
       "name": "Dodatkowa wersja miksu",
       "unit": "szt.",
-      "price": 0,
+      "price": 150,
       "color": "#ffffff"
     }
   ],
