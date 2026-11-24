@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:22:03.122Z"
+    "updatedAt": "2026-11-24T12:35:33.357Z"
   },
   "priceList": [
     {
@@ -327,6 +327,38 @@
       "color": "#f1eafe"
     }
   ],
-  "estimates": [],
+  "estimates": [
+    {
+      "id": "est-1795518831153-z0m6",
+      "status": "draft",
+      "archived": false,
+      "title": "",
+      "client": "",
+      "validFrom": "2026-11-24",
+      "validTo": "2026-12-08",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795523729773-hoc",
+          "type": "service",
+          "sourceServiceId": "srv-5",
+          "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, partytura, powyżej 35 instrumentów",
+          "unit": "min",
+          "qty": 1,
+          "price": 1700,
+          "color": "#e8f1ff",
+          "discount": "",
+          "note": ""
+        }
+      ],
+      "createdAt": "2026-11-24T11:13:51.153Z",
+      "updatedAt": "2026-11-24T12:35:33.357Z",
+      "summary": {
+        "gross": 1700,
+        "discount": 0,
+        "total": 1700
+      }
+    }
+  ],
   "trash": []
 }
