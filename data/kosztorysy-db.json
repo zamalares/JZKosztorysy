@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:07:00.763Z"
+    "updatedAt": "2026-11-24T11:08:20.010Z"
   },
   "priceList": [
     {
@@ -69,6 +69,74 @@
     }
   ],
   "estimates": [
+    {
+      "id": "est-1795518484638-dkjx",
+      "status": "final",
+      "archived": false,
+      "title": "",
+      "client": "",
+      "validFrom": "2026-11-24",
+      "validTo": "2026-12-08",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795518489815-wei",
+          "type": "service",
+          "sourceServiceId": "srv-3",
+          "name": "Zrealizowanie pojedynczej partii - brzmienia vsti - do 5 min",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 300,
+          "color": "#e6f7ed",
+          "discount": "",
+          "note": "fgsdf  fsg dsdf "
+        },
+        {
+          "id": "line-1795518489939-yae",
+          "type": "service",
+          "sourceServiceId": "srv-3",
+          "name": "Zrealizowanie pojedynczej partii - brzmienia vsti - do 5 min",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 300,
+          "color": "#e6f7ed",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518490088-1fg",
+          "type": "service",
+          "sourceServiceId": "srv-3",
+          "name": "Zrealizowanie pojedynczej partii - brzmienia vsti - do 5 min",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 300,
+          "color": "#e6f7ed",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795518490272-g67",
+          "type": "service",
+          "sourceServiceId": "srv-3",
+          "name": "Zrealizowanie pojedynczej partii - brzmienia vsti - do 5 min",
+          "unit": "usł.",
+          "qty": 1,
+          "price": 300,
+          "color": "#e6f7ed",
+          "discount": "",
+          "note": ""
+        }
+      ],
+      "createdAt": "2026-11-24T11:08:04.638Z",
+      "updatedAt": "2026-11-24T11:08:20.009Z",
+      "finalizedAt": "2026-11-24T11:08:20.009Z",
+      "summary": {
+        "gross": 1200,
+        "discount": 0,
+        "total": 1200
+      }
+    },
     {
       "id": "est-1795518359280-sqyt",
       "status": "final",
