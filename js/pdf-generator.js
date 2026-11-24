@@ -202,7 +202,7 @@ function buildDocDefinition(estimate) {
       }
     ]);
 
-    // Pełne obramowanie + delikatne tło pod notatką, bez rozrywania siatki tabeli
+    // Czysta notatka bez brakującego znaku przed tekstem, z pełną ramką i subtelnym tłem
     if (hasNote) {
       tableBody.push([
         {
@@ -212,7 +212,7 @@ function buildDocDefinition(estimate) {
         },
         {
           colSpan: 6,
-          text: `↳ ${item.note.trim()}`,
+          text: item.note.trim(),
           fontSize: 7.5,
           italics: true,
           color: '#374151',
@@ -309,12 +309,12 @@ function buildDocDefinition(estimate) {
         margin: [0, 0, 0, 10]
       },
 
-      // GŁÓWNA TABELA POZYCJI (kompaktowa, więcej miejsca na "Usługa")
+      // GŁÓWNA TABELA POZYCJI (węższe Cena i Rabat -> więcej miejsca na Usługę)
       {
         table: {
           headerRows: 1,
           dontBreakRows: true,
-          widths: [20, '*', 34, 28, 58, 48, 66],
+          widths: [18, '*', 32, 26, 50, 40, 64],
           body: tableBody
         },
         layout: {
@@ -322,8 +322,8 @@ function buildDocDefinition(estimate) {
           vLineWidth: () => 0.5,
           hLineColor: () => '#9ca3af',
           vLineColor: () => '#9ca3af',
-          paddingLeft: () => 4,
-          paddingRight: () => 4,
+          paddingLeft: () => 3.5,
+          paddingRight: () => 3.5,
           paddingTop: () => 2,
           paddingBottom: () => 2
         },
