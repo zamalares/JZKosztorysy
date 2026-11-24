@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:21:11.978Z"
+    "updatedAt": "2026-11-24T11:21:35.721Z"
   },
   "priceList": [
     {
@@ -9,35 +9,35 @@
       "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, partytura, do 5 instrumentów",
       "unit": "min.",
       "price": 240,
-      "color": "#ffffff"
+      "color": "#e8f1ff"
     },
     {
       "id": "srv-2",
-      "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, 6-12 instrumentów",
+      "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, partytura, 6-12 instrumentów",
       "unit": "min.",
       "price": 410,
       "color": "#e8f1ff"
     },
     {
       "id": "srv-3",
-      "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, 13-20 instrumentów",
+      "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, partytura, 13-20 instrumentów",
       "unit": "usł.",
       "price": 670,
-      "color": "#e6f7ed"
+      "color": "#e8f1ff"
     },
     {
       "id": "srv-4",
-      "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, 21-35 instrumentów",
+      "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, partytura, 21-35 instrumentów",
       "unit": "usł.",
       "price": 1100,
-      "color": "#fef7dc"
+      "color": "#e8f1ff"
     },
     {
       "id": "srv-5",
-      "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, powyżej 35 instrumentów",
+      "name": "MUZYKA KLASYCZNA, FILMOWA, TEATRALNA - KOMPOZYCJA, ARANŻACJA, partytura, powyżej 35 instrumentów",
       "unit": "h.",
       "price": 1700,
-      "color": "#ffece4"
+      "color": "#e8f1ff"
     },
     {
       "id": "srv-6",
