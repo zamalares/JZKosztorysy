@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:10:52.277Z"
+    "updatedAt": "2026-11-24T12:12:38.336Z"
   },
   "priceList": [
     {
@@ -191,14 +191,14 @@
       "name": "Nagranie studyjne",
       "unit": "h",
       "price": 180,
-      "color": "#ffffff"
+      "color": "#e6f7ed"
     },
     {
       "id": "srv-1795521141906",
-      "name": "Nagranie studyjne, godziny",
+      "name": "Nagranie studyjne, sesja poza standardowymi godzinami pracy studia",
       "unit": "h",
       "price": 270,
-      "color": "#ffffff"
+      "color": "#e6f7ed"
     },
     {
       "id": "srv-1795521143024",
