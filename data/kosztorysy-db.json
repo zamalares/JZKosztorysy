@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:14:19.217Z"
+    "updatedAt": "2026-11-24T12:14:43.704Z"
   },
   "priceList": [
     {
@@ -231,8 +231,8 @@
     {
       "id": "srv-1795522378327",
       "name": "Analogowe taśmowanie śladów lub miksu",
-      "unit": "usł.",
-      "price": 0,
+      "unit": "Track mono",
+      "price": 30,
       "color": "#ffffff"
     },
     {
