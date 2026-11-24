@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T11:32:00.275Z"
+    "updatedAt": "2026-11-24T11:39:44.171Z"
   },
   "priceList": [
     {
@@ -101,6 +101,13 @@
       "unit": "min",
       "price": 670,
       "color": "#fef7dc"
+    },
+    {
+      "id": "srv-1795520369323",
+      "name": "hjipy",
+      "unit": "usł.",
+      "price": 0,
+      "color": "#ffffff"
     }
   ],
   "estimates": [],
