@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:16:22.531Z"
+    "updatedAt": "2026-11-24T12:16:33.882Z"
   },
   "priceList": [
     {
@@ -258,7 +258,7 @@
     },
     {
       "id": "srv-1795522383849",
-      "name": "",
+      "name": "Mix pow 6 min utworu, ",
       "unit": "Utwór",
       "price": 1000,
       "color": "#ffffff"
