@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-25T17:42:25.480Z"
+    "updatedAt": "2026-11-25T17:43:13.297Z"
   },
   "priceList": [
     {
@@ -327,7 +327,8 @@
       "color": "#f1eafe"
     }
   ],
-  "estimates": [
+  "estimates": [],
+  "trash": [
     {
       "id": "est-1795628432311-mmvg",
       "status": "final",
@@ -452,8 +453,8 @@
         "discount": 0,
         "total": 8440
       },
-      "finalizedAt": "2026-11-25T17:42:25.480Z"
+      "finalizedAt": "2026-11-25T17:42:25.480Z",
+      "deletedAt": "2026-11-25T17:42:58.292Z"
     }
-  ],
-  "trash": []
+  ]
 }
