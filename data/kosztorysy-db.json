@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-25T17:42:06.424Z"
+    "updatedAt": "2026-11-25T17:42:25.480Z"
   },
   "priceList": [
     {
@@ -330,7 +330,7 @@
   "estimates": [
     {
       "id": "est-1795628432311-mmvg",
-      "status": "draft",
+      "status": "final",
       "archived": false,
       "title": "",
       "client": "",
@@ -446,12 +446,13 @@
         }
       ],
       "createdAt": "2026-11-25T17:40:32.311Z",
-      "updatedAt": "2026-11-25T17:42:06.423Z",
+      "updatedAt": "2026-11-25T17:42:25.479Z",
       "summary": {
         "gross": 8440,
         "discount": 0,
         "total": 8440
-      }
+      },
+      "finalizedAt": "2026-11-25T17:42:25.480Z"
     }
   ],
   "trash": []
