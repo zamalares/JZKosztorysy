@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-11-24T12:39:12.460Z"
+    "updatedAt": "2026-11-25T17:42:06.424Z"
   },
   "priceList": [
     {
@@ -327,6 +327,132 @@
       "color": "#f1eafe"
     }
   ],
-  "estimates": [],
+  "estimates": [
+    {
+      "id": "est-1795628432311-mmvg",
+      "status": "draft",
+      "archived": false,
+      "title": "",
+      "client": "",
+      "validFrom": "2026-11-25",
+      "validTo": "2026-12-09",
+      "globalDiscount": "",
+      "items": [
+        {
+          "id": "line-1795628483382-8uy",
+          "type": "service",
+          "sourceServiceId": "srv-6",
+          "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, LEAD SHEET",
+          "unit": "min",
+          "qty": 1,
+          "price": 140,
+          "color": "#e6f7ed",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795628483592-63w",
+          "type": "service",
+          "sourceServiceId": "srv-6",
+          "name": "MUZYKA ROZRYWKOWA – KOMPOZYCJA, pilot audio, LEAD SHEET",
+          "unit": "min",
+          "qty": 1,
+          "price": 140,
+          "color": "#e6f7ed",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795628486046-kv5",
+          "type": "service",
+          "sourceServiceId": "srv-1795521131666",
+          "name": "Kompozycja lub aranżacja muzyki rozrywkowej, tylko partytura, >5 instrumentów",
+          "unit": "min",
+          "qty": 1,
+          "price": 220,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795628486200-6iw",
+          "type": "service",
+          "sourceServiceId": "srv-1795521131666",
+          "name": "Kompozycja lub aranżacja muzyki rozrywkowej, tylko partytura, >5 instrumentów",
+          "unit": "min",
+          "qty": 1,
+          "price": 220,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795628486364-vuf",
+          "type": "service",
+          "sourceServiceId": "srv-1795521131666",
+          "name": "Kompozycja lub aranżacja muzyki rozrywkowej, tylko partytura, >5 instrumentów",
+          "unit": "min",
+          "qty": 1,
+          "price": 220,
+          "color": "#ffece4",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "sub-1795628488526-j22",
+          "type": "subtotal",
+          "label": "Suma częściowa"
+        },
+        {
+          "id": "sep-1795628489104-v0e",
+          "type": "separator",
+          "label": ""
+        },
+        {
+          "id": "line-1795628493850-1as",
+          "type": "service",
+          "sourceServiceId": "srv-1795522544912",
+          "name": "Mix powyżej 6 min utworu, Large, Ponad 50 ścieżek (max. trzy wersje miksu)",
+          "unit": "Utwór",
+          "qty": 1,
+          "price": 2500,
+          "color": "#e6f7ed",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795628494018-v6i",
+          "type": "service",
+          "sourceServiceId": "srv-1795522544912",
+          "name": "Mix powyżej 6 min utworu, Large, Ponad 50 ścieżek (max. trzy wersje miksu)",
+          "unit": "Utwór",
+          "qty": 1,
+          "price": 2500,
+          "color": "#e6f7ed",
+          "discount": "",
+          "note": ""
+        },
+        {
+          "id": "line-1795628494162-idf",
+          "type": "service",
+          "sourceServiceId": "srv-1795522544912",
+          "name": "Mix powyżej 6 min utworu, Large, Ponad 50 ścieżek (max. trzy wersje miksu)",
+          "unit": "Utwór",
+          "qty": 1,
+          "price": 2500,
+          "color": "#e6f7ed",
+          "discount": "",
+          "note": ""
+        }
+      ],
+      "createdAt": "2026-11-25T17:40:32.311Z",
+      "updatedAt": "2026-11-25T17:42:06.423Z",
+      "summary": {
+        "gross": 8440,
+        "discount": 0,
+        "total": 8440
+      }
+    }
+  ],
   "trash": []
 }
